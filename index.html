@@ -22,13 +22,87 @@
   .expand-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .32s ease; }
   .expand-inner { overflow: hidden; min-height: 0; }
   .trail-marker { transition: top .12s ease-out; }
+
+  .container { max-width: 1160px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+  .topo-bg { position: absolute; top: 0; left: 0; width: 100%; height: 1600px; pointer-events: none; z-index: 0; }
+  .scrim { position: absolute; top: 0; left: 0; width: 920px; height: 640px; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 720px 520px at 28% 34%, rgba(245,239,228,0.95) 0%, rgba(245,239,228,0.88) 45%, rgba(245,239,228,0) 78%); }
+  .scroll-trail-line { position: fixed; right: 22px; top: 70px; bottom: 70px; width: 2px; background: repeating-linear-gradient(to bottom, #C9BFA3 0, #C9BFA3 4px, transparent 4px, transparent 10px); z-index: 20; }
+  .nav-wrap { position: relative; z-index: 2; padding-top: 28px; }
+  .nav-bar { background: #FFFFFF; border-radius: 100px; padding: 14px 26px; box-shadow: 0 4px 16px rgba(51,48,42,0.06); display: flex; align-items: center; gap: 24px; width: 100%; justify-content: space-between; }
+  .nav-name { font-size: 19px; font-weight: 700; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { font-size: 14.5px; font-weight: 600; color: #6B6658; }
+  .nav-links .nav-cta { background: #4B5D45; color: #F5EFE4; padding: 10px 20px; border-radius: 100px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+  .hero { position: relative; z-index: 2; padding: 88px 0 40px; }
+  .hero-inner { max-width: 560px; }
+  .eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #4B5D45; margin-bottom: 18px; }
+  .h1-hero { font-size: 52px; line-height: 1.16; font-weight: 700; margin: 0 0 22px; color: #2B2820; }
+  .hero-sub { font-size: 17px; line-height: 1.65; color: #5C5748; margin: 0 0 32px; max-width: 460px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: #4B5D45; color: #F5EFE4; padding: 14px 26px; border-radius: 100px; font-size: 15px; font-weight: 700; display: inline-block; }
+  .btn-secondary { background: #F5EFE4; border: 1.5px solid #D9D0BC; color: #33302A; padding: 14px 26px; border-radius: 100px; font-size: 15px; font-weight: 700; display: inline-block; transition: color .15s ease, border-color .15s ease; }
+  .trail-section { position: relative; z-index: 2; padding: 24px 0 56px; }
+  .section-label { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #8A8471; margin-bottom: 16px; }
+  .pill-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .pill-tag { background: #FFFFFF; border: 1.5px solid #E4DCC7; border-radius: 100px; padding: 9px 20px; font-size: 14.5px; font-weight: 600; }
+  .work-section { position: relative; z-index: 2; padding: 24px 0; }
+  .work-heading { font-size: 30px; font-weight: 700; margin: 0 0 8px; color: #2B2820; }
+  .work-sub { font-size: 14.5px; color: #8A8471; margin: 0 0 28px; }
+  .case-list { background: #FFFFFF; border-radius: 20px; box-shadow: 0 2px 10px rgba(51,48,42,0.05); overflow: hidden; }
+  .case-row-inner { padding: 26px 28px; border-bottom: 1px solid #EEE7D8; }
+  .case-row:last-child .case-row-inner { border-bottom: none; }
+  .case-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .case-icon-title { display: flex; align-items: center; gap: 16px; min-width: 0; }
+  .case-company { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #8A8471; margin-bottom: 4px; }
+  .case-title { font-size: 18px; font-weight: 700; }
+  .case-desc { font-size: 14.5px; color: #6B6658; line-height: 1.55; margin: 14px 0 0; padding-left: 40px; }
+  .case-detail { font-size: 14px; color: #6B6658; line-height: 1.6; margin: 14px 0 0; padding: 14px 0 0 40px; border-top: 1px solid #EEE7D8; }
+  .case-link { display: inline-block; margin: 10px 0 0 40px; font-size: 13.5px; font-weight: 700; color: #C1663E; }
+  .confid-wrap { position: relative; z-index: 2; padding: 0 0 80px; margin-top: 48px; }
+  .confid-card { background: #EAE3D2; border-radius: 24px; padding: 48px; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .confid-title { font-size: 24px; font-weight: 700; margin: 0 0 10px; color: #2B2820; }
+  .confid-text { font-size: 15px; line-height: 1.6; color: #6B6658; margin: 0; max-width: 480px; }
+  .confid-btn { background: #C1663E; color: #FFF8ED; padding: 15px 26px; border-radius: 100px; font-size: 15px; font-weight: 700; white-space: nowrap; display: inline-block; }
+  .footer-wrap { position: relative; z-index: 2; border-top: 1px solid #E4DCC7; }
+  .footer-inner { padding-top: 32px; padding-bottom: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-note { font-size: 13.5px; color: #8A8471; }
+
+  @media (max-width: 640px) {
+    .container { padding-left: 20px; padding-right: 20px; }
+    .topo-bg { height: 2200px; }
+    .scrim { width: 100%; height: 480px; background: radial-gradient(ellipse 90% 420px at 40% 20%, rgba(245,239,228,0.96) 0%, rgba(245,239,228,0.9) 45%, rgba(245,239,228,0) 78%); }
+    .scroll-trail-line, .trail-marker { display: none; }
+    .nav-wrap { padding-top: 16px; }
+    .nav-bar { padding: 10px 14px; gap: 10px; border-radius: 24px; }
+    .nav-name { font-size: 15px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 12.5px; }
+    .nav-cta { padding: 8px 14px; font-size: 12.5px; }
+    .hero { padding: 40px 0 24px; }
+    .h1-hero { font-size: 30px; line-height: 1.22; margin-bottom: 16px; }
+    .hero-sub { font-size: 15px; margin-bottom: 22px; }
+    .eyebrow { font-size: 12px; margin-bottom: 12px; }
+    .btn-primary, .btn-secondary { padding: 12px 20px; font-size: 14px; }
+    .trail-section { padding: 16px 0 36px; }
+    .work-section { padding: 16px 0; }
+    .work-heading { font-size: 22px; }
+    .case-row-inner { padding: 18px 16px; }
+    .case-title { font-size: 16px; }
+    .case-desc, .case-detail, .case-link { padding-left: 0; }
+    .case-icon-title { gap: 10px; }
+    .confid-wrap { padding: 0 0 48px; margin-top: 28px; }
+    .confid-card { padding: 28px 20px; }
+    .confid-title { font-size: 19px; }
+    .confid-btn { width: 100%; text-align: center; }
+    .footer-inner { padding-top: 24px; padding-bottom: 24px; }
+  }
 </style>
 </head>
 <body>
 <div style="background:#F5EFE4; min-height: 100vh; color:#33302A; position:relative; overflow:hidden;">
 
-  <!-- TOPO MAP BACKGROUND -->
-  <svg viewBox="0 0 1440 1600" preserveAspectRatio="xMidYMin slice" style="position:absolute; top:0; left:0; width:100%; height:1600px; pointer-events:none; z-index:0;">
+  <svg class="topo-bg" viewBox="0 0 1440 1600" preserveAspectRatio="xMidYMin slice">
     <g id="topoLayer" fill="none" stroke="#4B5D45" stroke-linejoin="round" stroke-linecap="round">
       <path d="M61.4,0.0L59.3,9.7 M56.6,19.4L57.6,16.1 M59.3,9.7L57.6,16.1 M56.6,19.4L53.4,29.1 M53.4,29.1L49.7,38.8 M45.2,48.5L48.0,42.8 M49.7,38.8L48.0,42.8 M45.2,48.5L39.9,58.2 M33.3,67.9L38.4,60.7 M39.9,58.2L38.4,60.7 M25.2,77.6L28.8,73.7 M33.3,67.9L28.8,73.7 M14.5,87.3L19.2,83.5 M25.2,77.6L19.2,83.5 M0.0,96.4L9.6,91.0 M14.5,87.3L9.6,91.0" opacity="0.5" stroke-width="1.4"></path>
       <path d="M124.4,9.7L124.8,7.1 M125.9,0.0L124.8,7.1 M124.4,9.7L122.7,19.4 M122.7,19.4L121.1,29.1 M121.1,29.1L119.4,38.8 M119.4,38.8L117.6,48.5 M117.6,48.5L115.8,58.2 M113.7,67.9L115.2,61.0 M115.8,58.2L115.2,61.0 M113.7,67.9L111.5,77.6 M111.5,77.6L109.1,87.3 M109.1,87.3L106.5,97.0 M103.5,106.7L105.6,100.0 M106.5,97.0L105.6,100.0 M103.5,106.7L100.2,116.4 M100.2,116.4L96.4,126.1 M92.0,135.8L96.0,127.0 M96.4,126.1L96.0,127.0 M92.0,135.8L87.0,145.5 M81.1,155.2L86.4,146.5 M87.0,145.5L86.4,146.5 M74.1,164.8L76.8,161.4 M81.1,155.2L76.8,161.4 M65.8,174.5L67.2,173.1 M74.1,164.8L67.2,173.1 M55.9,184.2L57.6,182.7 M65.8,174.5L57.6,182.7 M43.8,193.9L48.0,190.8 M55.9,184.2L48.0,190.8 M29.5,203.6L38.4,197.9 M43.8,193.9L38.4,197.9 M13.1,213.3L19.2,209.9 M19.2,209.9L28.8,204.1 M29.5,203.6L28.8,204.1 M0.0,220.7L9.6,215.3 M13.1,213.3L9.6,215.3" opacity="0.5" stroke-width="0.8"></path>
@@ -85,164 +159,172 @@
     </g>
   </svg>
 
-  <!-- READABILITY SCRIM -->
-  <div style="position:absolute; top:0; left:0; width:920px; height:640px; z-index:1; pointer-events:none; background:radial-gradient(ellipse 720px 520px at 28% 34%, rgba(245,239,228,0.95) 0%, rgba(245,239,228,0.88) 45%, rgba(245,239,228,0) 78%);"></div>
-
-  <!-- SCROLL TRAIL -->
-  <div style="position:fixed; right:22px; top:70px; bottom:70px; width:2px; background:repeating-linear-gradient(to bottom, #C9BFA3 0, #C9BFA3 4px, transparent 4px, transparent 10px); z-index:20;"></div>
+  <div class="scrim"></div>
+  <div class="scroll-trail-line"></div>
   <div id="trailMarker" class="trail-marker" style="position:fixed; right:15px; top:70px; width:16px; height:16px; border-radius:100px; background:#C1663E; border:3px solid #F5EFE4; box-shadow:0 2px 6px rgba(51,48,42,0.25); z-index:21;"></div>
 
-  <!-- NAV -->
-  <div style="position:relative; z-index:2; max-width:1160px; margin:0 auto; padding:28px 40px 0;">
-    <div style="background:#FFFFFF; border-radius:100px; padding:14px 26px; box-shadow:0 4px 16px rgba(51,48,42,0.06); display:flex; align-items:center; gap:36px; width:100%; justify-content:space-between;">
-      <div class="display" style="font-size:19px; font-weight:700;">Dan Jecan</div>
-      <div style="display:flex; align-items:center; gap:28px;">
-        <a class="nav-link active" href="index.html" style="font-size:14.5px; font-weight:600; color:#6B6658;">Home</a>
-        <a class="nav-link" href="about.html" style="font-size:14.5px; font-weight:600; color:#6B6658;">About</a>
-        <a href="contact.html" style="background:#4B5D45; color:#F5EFE4; padding:10px 20px; border-radius:100px; font-size:14px; font-weight:700;">Say hello</a>
+  <div class="nav-wrap">
+    <div class="container">
+      <div class="nav-bar">
+        <div class="display nav-name">Dan Jecan</div>
+        <div class="nav-links">
+          <a class="nav-link active" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-cta" href="contact.html">Say hello</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- HERO -->
-  <div style="position:relative; z-index:2; max-width:1160px; margin:0 auto; padding:88px 40px 40px;">
-    <div style="max-width:560px;">
-      <div style="font-size:14px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#4B5D45; margin-bottom:18px;">Senior UX Researcher</div>
-      <h1 class="display" style="font-size:52px; line-height:1.16; font-weight:700; margin:0 0 22px; color:#2B2820;">Mapping the unknown, one insight at a time.</h1>
-      <p style="font-size:17px; line-height:1.65; color:#5C5748; margin:0 0 32px; max-width:460px;">Nearly 15 years turning ambiguity into clear direction</p>
-      <div style="display:flex; gap:14px;">
-        <a href="#work" style="background:#4B5D45; color:#F5EFE4; padding:14px 26px; border-radius:100px; font-size:15px; font-weight:700;">See my work</a>
-        <a class="pill" href="contact.html" style="background:#F5EFE4; border:1.5px solid #D9D0BC; color:#33302A; padding:14px 26px; border-radius:100px; font-size:15px; font-weight:700; transition:color .15s ease, border-color .15s ease;">Say hello</a>
+  <div class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="eyebrow">Senior UX Researcher</div>
+        <h1 class="display h1-hero">Mapping the unknown, one insight at a time.</h1>
+        <p class="hero-sub">Nearly 15 years turning ambiguity into clear direction</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#work">See my work</a>
+          <a class="pill btn-secondary" href="contact.html">Say hello</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- TRAIL COMPANIONS -->
-  <div style="position:relative; z-index:2; max-width:1160px; margin:0 auto; padding:24px 40px 56px;">
-    <div style="font-size:13px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#8A8471; margin-bottom:16px;">Trail companions</div>
-    <div style="display:flex; gap:12px; flex-wrap:wrap;">
-      <span style="background:#FFFFFF; border:1.5px solid #E4DCC7; border-radius:100px; padding:9px 20px; font-size:14.5px; font-weight:600;">Bosch</span>
-      <span style="background:#FFFFFF; border:1.5px solid #E4DCC7; border-radius:100px; padding:9px 20px; font-size:14.5px; font-weight:600;">Wizz Air</span>
-      <span style="background:#FFFFFF; border:1.5px solid #E4DCC7; border-radius:100px; padding:9px 20px; font-size:14.5px; font-weight:600;">Netflix</span>
-      <span style="background:#FFFFFF; border:1.5px solid #E4DCC7; border-radius:100px; padding:9px 20px; font-size:14.5px; font-weight:600;">Medocity</span>
+  <div class="trail-section">
+    <div class="container">
+      <div class="section-label">Trail companions</div>
+      <div class="pill-row">
+        <span class="pill-tag">Bosch</span>
+        <span class="pill-tag">Wizz Air</span>
+        <span class="pill-tag">Netflix</span>
+        <span class="pill-tag">Medocity</span>
+      </div>
     </div>
   </div>
 
-  <!-- CASE STUDIES -->
-  <div id="work" style="position:relative; z-index:2; max-width:1160px; margin:0 auto; padding:24px 40px;">
-    <h2 class="display" style="font-size:30px; font-weight:700; margin:0 0 8px; color:#2B2820;">A few trails I've mapped</h2>
-    <p style="font-size:14.5px; color:#8A8471; margin:0 0 28px;">Tap a row to read more.</p>
-    <div style="background:#FFFFFF; border-radius:20px; box-shadow:0 2px 10px rgba(51,48,42,0.05); overflow:hidden;">
+  <div id="work" class="work-section">
+    <div class="container">
+      <h2 class="display work-heading">A few trails I've mapped</h2>
+      <p class="work-sub">Tap a row to read more.</p>
+      <div class="case-list">
 
-      <div class="case-row" data-key="bosch" style="padding:26px 28px; border-bottom:1px solid #EEE7D8;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:20px;">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
-            <div>
-              <div style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#8A8471; margin-bottom:4px;">Bosch</div>
-              <div class="display" style="font-size:18px; font-weight:700;">Concept testing</div>
+        <div class="case-row" data-key="bosch">
+          <div class="case-row-inner">
+            <div class="case-top">
+              <div class="case-icon-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
+                <div>
+                  <div class="case-company">Bosch</div>
+                  <div class="display case-title">Concept testing</div>
+                </div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"></path></svg>
+            </div>
+            <p class="case-desc">Designing and testing a product concept.</p>
+            <div class="expand-wrap">
+              <div class="expand-inner">
+                <p class="case-detail">From early ambiguity to a validated direction &mdash; the full write-up stays behind a password out of client confidentiality.</p>
+                <a class="case-link" href="contact.html">Ask to explore &rarr;</a>
+              </div>
             </div>
           </div>
-          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"></path></svg>
         </div>
-        <p style="font-size:14.5px; color:#6B6658; line-height:1.55; margin:14px 0 0; padding-left:40px;">Designing and testing a product concept.</p>
-        <div class="expand-wrap">
-          <div class="expand-inner">
-            <p style="font-size:14px; color:#6B6658; line-height:1.6; margin:14px 0 0; padding:14px 0 0 40px; border-top:1px solid #EEE7D8;">From early ambiguity to a validated direction &mdash; the full write-up stays behind a password out of client confidentiality.</p>
-            <a href="contact.html" style="display:inline-block; margin:10px 0 0 40px; font-size:13.5px; font-weight:700; color:#C1663E;">Ask to explore &rarr;</a>
-          </div>
-        </div>
-      </div>
 
-      <div class="case-row" data-key="wizz" style="padding:26px 28px; border-bottom:1px solid #EEE7D8;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:20px;">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
-            <div>
-              <div style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#8A8471; margin-bottom:4px;">Wizz Air</div>
-              <div class="display" style="font-size:18px; font-weight:700;">CRO</div>
+        <div class="case-row" data-key="wizz">
+          <div class="case-row-inner">
+            <div class="case-top">
+              <div class="case-icon-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
+                <div>
+                  <div class="case-company">Wizz Air</div>
+                  <div class="display case-title">CRO</div>
+                </div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"></path></svg>
+            </div>
+            <p class="case-desc">Optimizing conversion through continuous testing.</p>
+            <div class="expand-wrap">
+              <div class="expand-inner">
+                <p class="case-detail">Structured, continuous testing across the booking flow &mdash; the full write-up stays behind a password out of client confidentiality.</p>
+                <a class="case-link" href="contact.html">Ask to explore &rarr;</a>
+              </div>
             </div>
           </div>
-          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"></path></svg>
         </div>
-        <p style="font-size:14.5px; color:#6B6658; line-height:1.55; margin:14px 0 0; padding-left:40px;">Optimizing conversion through continuous testing.</p>
-        <div class="expand-wrap">
-          <div class="expand-inner">
-            <p style="font-size:14px; color:#6B6658; line-height:1.6; margin:14px 0 0; padding:14px 0 0 40px; border-top:1px solid #EEE7D8;">Structured, continuous testing across the booking flow &mdash; the full write-up stays behind a password out of client confidentiality.</p>
-            <a href="contact.html" style="display:inline-block; margin:10px 0 0 40px; font-size:13.5px; font-weight:700; color:#C1663E;">Ask to explore &rarr;</a>
-          </div>
-        </div>
-      </div>
 
-      <div class="case-row" data-key="netflix" style="padding:26px 28px; border-bottom:1px solid #EEE7D8;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:20px;">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
-            <div>
-              <div style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#8A8471; margin-bottom:4px;">Netflix</div>
-              <div class="display" style="font-size:18px; font-weight:700;">Payment testing</div>
+        <div class="case-row" data-key="netflix">
+          <div class="case-row-inner">
+            <div class="case-top">
+              <div class="case-icon-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
+                <div>
+                  <div class="case-company">Netflix</div>
+                  <div class="display case-title">Payment testing</div>
+                </div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"></path></svg>
+            </div>
+            <p class="case-desc">Discovering the challenges of 3DS.</p>
+            <div class="expand-wrap">
+              <div class="expand-inner">
+                <p class="case-detail">Uncovering where 3DS authentication breaks down at the point of payment &mdash; the full write-up stays behind a password out of client confidentiality.</p>
+                <a class="case-link" href="contact.html">Ask to explore &rarr;</a>
+              </div>
             </div>
           </div>
-          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"></path></svg>
         </div>
-        <p style="font-size:14.5px; color:#6B6658; line-height:1.55; margin:14px 0 0; padding-left:40px;">Discovering the challenges of 3DS.</p>
-        <div class="expand-wrap">
-          <div class="expand-inner">
-            <p style="font-size:14px; color:#6B6658; line-height:1.6; margin:14px 0 0; padding:14px 0 0 40px; border-top:1px solid #EEE7D8;">Uncovering where 3DS authentication breaks down at the point of payment &mdash; the full write-up stays behind a password out of client confidentiality.</p>
-            <a href="contact.html" style="display:inline-block; margin:10px 0 0 40px; font-size:13.5px; font-weight:700; color:#C1663E;">Ask to explore &rarr;</a>
-          </div>
-        </div>
-      </div>
 
-      <div class="case-row" data-key="medocity" style="padding:26px 28px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:20px;">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
-            <div>
-              <div style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#8A8471; margin-bottom:4px;">Medocity</div>
-              <div class="display" style="font-size:18px; font-weight:700;">Legacy testing</div>
+        <div class="case-row" data-key="medocity">
+          <div class="case-row-inner">
+            <div class="case-top">
+              <div class="case-icon-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
+                <div>
+                  <div class="case-company">Medocity</div>
+                  <div class="display case-title">Legacy testing</div>
+                </div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"></path></svg>
+            </div>
+            <p class="case-desc">Setting the course for patient-centricity.</p>
+            <div class="expand-wrap">
+              <div class="expand-inner">
+                <p class="case-detail">Setting a long-standing legacy platform on course for patient-centricity &mdash; the full write-up stays behind a password out of client confidentiality.</p>
+                <a class="case-link" href="contact.html">Ask to explore &rarr;</a>
+              </div>
             </div>
           </div>
-          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"></path></svg>
         </div>
-        <p style="font-size:14.5px; color:#6B6658; line-height:1.55; margin:14px 0 0; padding-left:40px;">Setting the course for patient-centricity.</p>
-        <div class="expand-wrap">
-          <div class="expand-inner">
-            <p style="font-size:14px; color:#6B6658; line-height:1.6; margin:14px 0 0; padding:14px 0 0 40px; border-top:1px solid #EEE7D8;">Setting a long-standing legacy platform on course for patient-centricity &mdash; the full write-up stays behind a password out of client confidentiality.</p>
-            <a href="contact.html" style="display:inline-block; margin:10px 0 0 40px; font-size:13.5px; font-weight:700; color:#C1663E;">Ask to explore &rarr;</a>
-          </div>
-        </div>
-      </div>
 
+      </div>
     </div>
   </div>
 
-  <!-- CONFIDENTIALITY BAND -->
-  <div style="position:relative; z-index:2; max-width:1160px; margin:48px auto 0; padding:0 40px 80px;">
-    <div style="background:#EAE3D2; border-radius:24px; padding:48px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap;">
-      <div style="max-width:480px;">
-        <h3 class="display" style="font-size:24px; font-weight:700; margin:0 0 10px; color:#2B2820;">Curious what's behind the ridge?</h3>
-        <p style="font-size:15px; line-height:1.6; color:#6B6658; margin:0;">These case studies stay behind a password out of respect for client confidentiality &mdash; send a message and I'll happily share the map.</p>
+  <div class="confid-wrap">
+    <div class="container">
+      <div class="confid-card">
+        <div>
+          <h3 class="display confid-title">Curious what's behind the ridge?</h3>
+          <p class="confid-text">These case studies stay behind a password out of respect for client confidentiality &mdash; send a message and I'll happily share the map.</p>
+        </div>
+        <a class="confid-btn" href="contact.html">Request the map</a>
       </div>
-      <a href="contact.html" style="background:#C1663E; color:#FFF8ED; padding:15px 26px; border-radius:100px; font-size:15px; font-weight:700; white-space:nowrap;">Request the map</a>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <div style="position:relative; z-index:2; border-top:1px solid #E4DCC7;">
-    <div style="max-width:1160px; margin:0 auto; padding:32px 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-      <div style="display:flex; gap:24px;">
-        <a class="nav-link active" href="index.html" style="font-size:14px; font-weight:600; color:#6B6658;">Home</a>
-        <a class="nav-link" href="about.html" style="font-size:14px; font-weight:600; color:#6B6658;">About</a>
-        <a class="nav-link" href="contact.html" style="font-size:14px; font-weight:600; color:#6B6658;">Contact</a>
+  <div class="footer-wrap">
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
       </div>
-      <div style="font-size:13.5px; color:#8A8471;">Made with curiosity, in the mountains.</div>
+      <div class="footer-note">Made with curiosity, in the mountains.</div>
     </div>
   </div>
 
 </div>
 <script>
-  // Scroll trail
   var trailMarker = document.getElementById('trailMarker');
   function updateTrail() {
     var doc = document.documentElement;
@@ -254,23 +336,24 @@
   window.addEventListener('scroll', updateTrail, { passive: true });
   updateTrail();
 
-  // Mouse parallax on the topo background: ease toward the cursor each frame.
   var topoLayer = document.getElementById('topoLayer');
   var targetX = 0, targetY = 0, sx = 0, sy = 0;
+  var reduceMotion = window.matchMedia('(max-width: 640px)').matches;
   window.addEventListener('mousemove', function (e) {
     targetX = (e.clientX / window.innerWidth - 0.5) * 2;
     targetY = (e.clientY / window.innerHeight - 0.5) * 2;
   });
   function tick() {
-    var ease = 0.06;
-    sx += (targetX - sx) * ease;
-    sy += (targetY - sy) * ease;
-    topoLayer.style.transform = 'translate(' + (sx * 24).toFixed(1) + 'px, ' + (sy * 24).toFixed(1) + 'px)';
+    if (!reduceMotion) {
+      var ease = 0.06;
+      sx += (targetX - sx) * ease;
+      sy += (targetY - sy) * ease;
+      topoLayer.style.transform = 'translate(' + (sx * 24).toFixed(1) + 'px, ' + (sy * 24).toFixed(1) + 'px)';
+    }
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
 
-  // Case study rows: click to expand/collapse.
   document.querySelectorAll('.case-row').forEach(function (row) {
     row.addEventListener('click', function () {
       var wrap = row.querySelector('.expand-wrap');
