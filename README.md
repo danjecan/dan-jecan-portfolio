@@ -159,12 +159,18 @@ polygons instead of circles.
   `<g id="topoLayer">` on **all five** pages; Home's `<circle>` summit
   marker is emitted too. Commit the HTML.
 - The topo is a **fixed, full-viewport backdrop** on every page
-  (`.topo-bg { position: fixed; inset: 0 }`) with a flat cream
-  `.scrim` at `opacity .66` over it — a faint even texture, not a
-  subject. Bumps are spread wide and gentle so any viewport crop looks
-  balanced. Paths are baked (no runtime JS for the drawing);
-  `resume.html` / `case-studies.html` keep only the small parallax
-  script, and the scroll-progress "trail" that used to be on
+  (`.topo-bg { position: fixed; inset: 0 }`). Paths are baked at
+  `opacity 0.6`; a **cursor "lantern"** does the rest — `.scrim` is a
+  radial gradient centred on `--mx`/`--my` (set from the pointer,
+  eased at 0.16 in the page script) that goes from ~fully transparent
+  at the cursor to a ~0.9 cream veil beyond ~300px, so the map is a
+  faint whisper everywhere and brightens to crisp where you look
+  ("mapping the unknown"). A second `.lamp` div adds a warm
+  `mix-blend-mode: screen` glow. Gated to
+  `@media (hover: hover) and (pointer: fine)`; `prefers-reduced-motion`
+  swaps in a static off-centre vignette; touch gets a flat `0.82`
+  veil. Terrain also parallax-drifts (slower than the light, for
+  depth). The scroll-progress "trail" that used to be on
   Home/About/Contact has been removed.
 - `src/Main|About|Contact.dc.html` carry an ES5 port of the same
   stitch+smooth inside their `buildContours`, but with their own older

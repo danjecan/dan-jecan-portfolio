@@ -22,7 +22,7 @@ const COLS = 160;
 const ROWS = 100;
 const LEVELS = 34;
 const SEED = 20250801;
-const STROKE_OPACITY = '0.32';
+const STROKE_OPACITY = '0.6';
 
 // A calm, evenly-spread terrain: one softly-dominant hill near mid-frame (so it
 // survives the center-crop on portrait viewports) plus gentle wide hills across
