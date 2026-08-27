@@ -1,0 +1,57 @@
+{
+  "_comment": "Real case-study content. Edit freely, then run `node tools/build-case-studies.mjs` to re-encrypt into case-studies.html. Nothing here is committed to the site in readable form — only the AES-GCM ciphertext is. Body text: separate paragraphs with a blank line. This file is gitignored; keep a private copy.",
+  "studies": [
+    {
+      "key": "bosch",
+      "company": "Bosch",
+      "title": "Concept testing — from ambiguity to a validated direction",
+      "summary": "Designing and testing an early product concept.",
+      "sections": [
+        { "h": "Context", "body": "[Placeholder] The team had an early concept and competing internal opinions about which direction to take. The brief was open: reduce the ambiguity enough to commit.\n\nReplace this with the real context — product area, who the users were, what decision was on the line." },
+        { "h": "My role", "body": "[Placeholder] Lead researcher: study design, recruitment criteria, moderation, analysis, and the readout to stakeholders." },
+        { "h": "Approach", "body": "[Placeholder] Describe the method mix — e.g. concept walkthroughs with N participants across M segments, comparative evaluation of two or three directions, a short follow-up survey." },
+        { "h": "What we found", "body": "[Placeholder] The two or three findings that actually moved the decision. Keep them specific and non-confidential-safe once you fill this in." },
+        { "h": "Impact", "body": "[Placeholder] Which direction the team committed to and why; what shipped or changed as a result." }
+      ]
+    },
+    {
+      "key": "wizzair",
+      "company": "Wizz Air",
+      "title": "Conversion rate optimisation across the booking flow",
+      "summary": "Optimising conversion through structured, continuous testing.",
+      "sections": [
+        { "h": "Context", "body": "[Placeholder] The booking funnel had known drop-off points and a backlog of untested hypotheses. The goal was a repeatable testing rhythm rather than one-off studies." },
+        { "h": "My role", "body": "[Placeholder] Set up and ran the continuous testing programme: hypothesis intake, prioritisation, test design, analysis, and sharing results." },
+        { "h": "Approach", "body": "[Placeholder] Cadence, sample sizes, mix of moderated and unmoderated sessions, how hypotheses were prioritised, how results fed back to design and product." },
+        { "h": "What we found", "body": "[Placeholder] Patterns across tests — where users hesitated, what wording or layout changes helped, what didn't move the needle." },
+        { "h": "Impact", "body": "[Placeholder] Conversion changes, decisions made, and how the testing rhythm changed the way the team worked." }
+      ]
+    },
+    {
+      "key": "netflix",
+      "company": "Netflix",
+      "title": "Payment testing — where 3-D Secure breaks down",
+      "summary": "Discovering the challenges of 3DS authentication at the point of payment.",
+      "sections": [
+        { "h": "Context", "body": "[Placeholder] 3-D Secure adds an authentication step at checkout that can create friction or failure. The team needed to understand where and why users fell out." },
+        { "h": "My role", "body": "[Placeholder] Research lead for the payment authentication studies." },
+        { "h": "Approach", "body": "[Placeholder] Markets covered, banks / card types, moderated payment attempts, diary or unmoderated follow-up, instrumentation reviewed alongside the qualitative work." },
+        { "h": "What we found", "body": "[Placeholder] The specific moments where 3DS authentication broke down and the user-side reasons behind them." },
+        { "h": "Impact", "body": "[Placeholder] What the payments and design teams changed, and what was escalated to partners / banks." }
+      ]
+    },
+    {
+      "key": "medocity",
+      "company": "Medocity",
+      "title": "Setting a legacy platform on course for patient-centricity",
+      "summary": "Charting a long-standing legacy platform toward patient-centred care.",
+      "sections": [
+        { "h": "Context", "body": "[Placeholder] A mature healthcare platform built up over years, with accumulated complexity and a goal of re-centring on patients." },
+        { "h": "My role", "body": "[Placeholder] Led the discovery research and helped translate it into a direction the team could act on." },
+        { "h": "Approach", "body": "[Placeholder] Interviews with patients and care teams, journey mapping, heuristic and usability review of the existing platform, prioritisation workshop." },
+        { "h": "What we found", "body": "[Placeholder] The gaps between how the platform worked and what patient-centred care needed." },
+        { "h": "Impact", "body": "[Placeholder] The roadmap or principles that came out of it and what changed first." }
+      ]
+    }
+  ]
+}
