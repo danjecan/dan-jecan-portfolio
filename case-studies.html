@@ -161,18 +161,28 @@
     border-radius: var(--pill); padding: 8px 16px; font: 700 .74rem 'Karla', sans-serif;
     letter-spacing: .06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
   .lock-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .cs-intro { font-size: 1rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 18px; max-width: 58ch; }
-  .cs-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
-  .cs-toc a { font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-soft);
-    background: var(--surface); border: 1px solid var(--rule); border-radius: var(--pill); padding: 6px 14px; }
-  .cs-toc a:hover { border-color: var(--accent); color: var(--accent); }
+  .cs-intro { font-size: 1rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 20px; max-width: 58ch; }
 
-  .cs-study { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
-    padding: clamp(26px, 4vw, 36px); margin-top: 24px; scroll-margin-top: 24px; }
+  .cs-tabs { display: flex; flex-wrap: wrap; gap: 2px; margin: 0 0 22px; border-bottom: 1px solid var(--rule); }
+  .cs-tab { appearance: none; background: none; border: 0; cursor: pointer; margin-bottom: -1px;
+    font: 700 .82rem/1 'Karla', ui-sans-serif, sans-serif; letter-spacing: .03em; color: var(--text-soft);
+    padding: 11px 14px; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .cs-tab:hover { color: var(--ink); }
+  .cs-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .cs-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; border-radius: 3px; }
+
+  .cs-panel { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: clamp(26px, 4vw, 38px); }
+  .cs-panel:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .cs-company { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-  .cs-title { font-size: 1.25rem; line-height: 1.25; font-weight: 700; color: var(--ink); margin: 0 0 6px; }
-  .cs-summary { font-size: .975rem; color: var(--text-soft); margin: 0 0 8px; font-style: italic; }
-  .cs-section { margin-top: 22px; }
+  .cs-title { font-size: clamp(1.2rem, 1rem + .8vw, 1.4rem); line-height: 1.25; font-weight: 700; color: var(--ink); margin: 0 0 8px; }
+  .cs-summary { font-size: 1rem; line-height: 1.55; color: var(--text-soft); margin: 0; }
+  .cs-meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 14px 0 0; font-size: .85rem; color: var(--muted); }
+  .cs-meta .k { color: var(--text); font-weight: 700; margin-right: 5px; }
+  .cs-methods { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
+  .cs-methods span { font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-soft);
+    background: var(--bg); border: 1px solid var(--rule); border-radius: var(--pill); padding: 4px 10px; }
+  .cs-section { margin-top: 24px; }
   .cs-section h3 { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
   .cs-section p { font-size: 1rem; line-height: 1.65; color: var(--text); margin: 0 0 10px; max-width: 66ch; }
   .cs-section p:last-child { margin-bottom: 0; }
@@ -180,7 +190,8 @@
   [hidden] { display: none !important; }
 
   @media (max-width: 640px) {
-    .cs-study { padding: 24px 20px; }
+    .cs-panel { padding: 24px 20px; }
+    .cs-tab { padding: 10px 11px; font-size: .78rem; }
   }
 </style>
 </head>
@@ -264,8 +275,8 @@
           <button id="lock-btn" class="lock-btn" type="button">Lock again</button>
         </div>
         <p class="cs-intro">Thanks for asking. These stay off the public site &mdash; please keep the details in confidence.</p>
-        <nav class="cs-toc" id="cs-toc" aria-label="Case studies"></nav>
-        <div id="cs-list"></div>
+        <div class="cs-tabs" id="cs-tabs" role="tablist" aria-label="Case studies"></div>
+        <div id="cs-panels"></div>
       </div>
 
     </div>
@@ -308,48 +319,101 @@
     return JSON.parse(new TextDecoder().decode(buf));
   }
 
-  function render(data) {
-    const list = $('cs-list');
-    const toc = $('cs-toc');
-    list.innerHTML = '';
-    toc.innerHTML = '';
-    (data.studies || []).forEach((s) => {
-      const a = document.createElement('a');
-      a.href = '#' + s.key;
-      a.textContent = s.company;
-      toc.appendChild(a);
+  var csKeys = [];
+  var currentKey = null;
 
-      const art = document.createElement('article');
-      art.className = 'cs-study';
-      art.id = s.key;
-      const sections = (s.sections || []).map((sec) => {
-        const paras = String(sec.body || '')
-          .split(/\n\s*\n/)
-          .map((p) => '<p>' + escapeHtml(p.trim()) + '</p>')
-          .join('');
-        return '<div class="cs-section"><h3>' + escapeHtml(sec.h || '') + '</h3>' + paras + '</div>';
-      }).join('');
-      art.innerHTML =
-        '<div class="cs-company">' + escapeHtml(s.company || '') + '</div>' +
-        '<h2 class="display cs-title">' + escapeHtml(s.title || '') + '</h2>' +
-        (s.summary ? '<p class="cs-summary">' + escapeHtml(s.summary) + '</p>' : '') +
-        sections;
-      list.appendChild(art);
+  function panelHtml(s) {
+    const meta = s.meta || {};
+    const bits = [];
+    if (meta.role) bits.push('<span><span class="k">Role</span>' + escapeHtml(meta.role) + '</span>');
+    if (meta.timeline) bits.push('<span><span class="k">When</span>' + escapeHtml(meta.timeline) + '</span>');
+    const methods = (meta.methods || []).map((m) => '<span>' + escapeHtml(m) + '</span>').join('');
+    const sections = (s.sections || []).map((sec) => {
+      const paras = String(sec.body || '')
+        .split(/\n\s*\n/)
+        .map((p) => '<p>' + escapeHtml(p.trim()) + '</p>')
+        .join('');
+      return '<div class="cs-section"><h3>' + escapeHtml(sec.h || '') + '</h3>' + paras + '</div>';
+    }).join('');
+    return '<div class="cs-company">' + escapeHtml(s.company || '') + '</div>' +
+      '<h2 class="display cs-title">' + escapeHtml(s.title || '') + '</h2>' +
+      (s.summary ? '<p class="cs-summary">' + escapeHtml(s.summary) + '</p>' : '') +
+      (bits.length ? '<div class="cs-meta">' + bits.join('') + '</div>' : '') +
+      (methods ? '<div class="cs-methods">' + methods + '</div>' : '') +
+      sections;
+  }
+
+  function selectTab(key, focusTab) {
+    if (csKeys.indexOf(key) === -1) key = csKeys[0];
+    currentKey = key;
+    csKeys.forEach((k) => {
+      const on = k === key;
+      const tab = $('tab-' + k);
+      const panel = $('panel-' + k);
+      tab.setAttribute('aria-selected', on ? 'true' : 'false');
+      tab.tabIndex = on ? 0 : -1;
+      panel.hidden = !on;
+    });
+    if (focusTab) $('tab-' + key).focus();
+    try { history.replaceState(null, '', '#' + key); } catch (e) { location.hash = key; }
+  }
+
+  function render(data) {
+    const tabs = $('cs-tabs');
+    const panels = $('cs-panels');
+    tabs.innerHTML = '';
+    panels.innerHTML = '';
+    const studies = data.studies || [];
+    csKeys = studies.map((s) => s.key);
+
+    studies.forEach((s) => {
+      const tab = document.createElement('button');
+      tab.type = 'button';
+      tab.className = 'cs-tab';
+      tab.id = 'tab-' + s.key;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', 'panel-' + s.key);
+      tab.setAttribute('aria-selected', 'false');
+      tab.tabIndex = -1;
+      tab.textContent = s.company;
+      tab.addEventListener('click', () => selectTab(s.key, false));
+      tabs.appendChild(tab);
+
+      const panel = document.createElement('article');
+      panel.className = 'cs-panel';
+      panel.id = 'panel-' + s.key;
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', 'tab-' + s.key);
+      panel.tabIndex = 0;
+      panel.hidden = true;
+      panel.innerHTML = panelHtml(s);
+      panels.appendChild(panel);
     });
   }
+
+  function onTabKeydown(e) {
+    if (!csKeys.length) return;
+    let next = -1;
+    const i = csKeys.indexOf(currentKey);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % csKeys.length;
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + csKeys.length) % csKeys.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = csKeys.length - 1;
+    if (next > -1) { e.preventDefault(); selectTab(csKeys[next], true); }
+  }
+  $('cs-tabs').addEventListener('keydown', onTabKeydown);
 
   function escapeHtml(str) {
     return str.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
   function unlock(data) {
+    if (!$('content').hidden) return;
     render(data);
     $('gate').hidden = true;
     $('content').hidden = false;
-    if (location.hash) {
-      const el = document.getElementById(location.hash.slice(1));
-      if (el) el.scrollIntoView();
-    }
+    const fromHash = location.hash.slice(1);
+    selectTab(csKeys.indexOf(fromHash) > -1 ? fromHash : csKeys[0], false);
   }
 
   function ssGet() { try { return sessionStorage.getItem(SS_KEY); } catch (e) { return null; } }

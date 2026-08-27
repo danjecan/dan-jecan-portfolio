@@ -104,13 +104,22 @@ password, the browser derives a key (PBKDF2-SHA256, 150k iterations)
 and decrypts client-side. Unlock is remembered for the browser session
 (`sessionStorage`); "Lock again" clears it.
 
+The unlocked view is a **tabbed panel** — one case study at a time,
+one tab per client, deep-linkable (`case-studies.html#netflix`),
+arrow-key navigable. Each study follows the same shape (see
+`tools/case-studies.content.example.json`): `key`, `company` (the tab
+label), `title`, `summary`, an optional `meta` (`role`, `timeline`,
+`methods[]` — rendered as a line + chips), and a `sections` array of
+`{ "h": heading, "body": text }` (blank line between paragraphs). Keep
+each study to ~one screen — enough to keep a recruiter interested, not
+a full report.
+
 To publish real content:
 
 1. `cp tools/case-studies.content.example.json tools/case-studies.content.json`
    (the real file is `.gitignore`d — keep a private backup).
-2. Edit `tools/case-studies.content.json` — each study has a `sections`
-   array of `{ "h": heading, "body": text }`; separate paragraphs with
-   a blank line.
+2. Fill in `tools/case-studies.content.json`, one study per entry in
+   `studies[]`, all to the same shape.
 3. `CASE_STUDIES_PASSWORD='the real password' node tools/build-case-studies.mjs`
    — this re-encrypts and rewrites the `CS_PAYLOAD` block in
    `case-studies.html`.
