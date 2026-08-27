@@ -5,17 +5,22 @@ Claude's Design canvas (Home, About, Contact, and a Design System
 reference board), themed around a generated topographic-map motif.
 
 **Live site:** https://danjecan.github.io/dan-jecan-portfolio/
+**Editable Claude Design canvas:** (removed)
+**GitHub repo:** https://github.com/danjecan/dan-jecan-portfolio (public)
 
 ## Structure
 
 - `index.html`, `about.html`, `contact.html` — the actual browsable
   static site (real navigation between pages), served by GitHub Pages.
-  Self-contained, no build step, no dependencies.
+  Self-contained, no build step, no dependencies. Responsive (has a
+  640px mobile breakpoint).
 - `src/` — the editable Claude Design source. Each `*.dc.html` file is
   one artboard; `canvas.json` lays them out on the canvas.
-  - `Main.dc.html` — Home
-  - `About.dc.html` — About
-  - `Contact.dc.html` — Contact
+  - `Main.dc.html` / `About.dc.html` / `Contact.dc.html` — desktop
+    pages (1440px frames)
+  - `MainMobile.dc.html` / `AboutMobile.dc.html` /
+    `ContactMobile.dc.html` — dedicated phone-frame artboards (390px),
+    separate from the desktop ones and from the responsive static site
   - `DesignSystem.dc.html` — design system reference (type, color,
     components) — not part of the public site
 - `dist/dan-jecan-basecamp.html` — the built Claude Design canvas
@@ -41,3 +46,23 @@ This was built with Claude Code's `/design` skill. To keep iterating:
 
 Treat `src/` as the source of truth — `dist/` and the root HTML pages
 are both generated from it.
+
+## Gotchas already solved (don't rediscover these)
+
+- `canvas.json`'s `launch` is set to `{"view":"focused","file":"Main.dc.html"}`
+  on purpose — opening straight into the full canvas overview
+  (`{"view":"canvas"}`) lands off-screen once enough artboards make
+  the bounding box very tall (an editor first-load camera-fit race,
+  not a content bug). "Fit artboards" from the toolbar still works
+  fine once clicked manually.
+- The topo-map backgrounds are generated at build time (marching
+  squares over a noise field of a few smooth "hills"), not hand-drawn
+  — see the `buildContours` function duplicated in each `*.dc.html`'s
+  script block. Each page/artboard has its own bump coordinates sized
+  to its own canvas.
+- `index.html` / `about.html` / `contact.html` are hand-ported from
+  `src/` with the Design Components templating resolved to plain
+  JS/CSS (including baking the generated topo paths to static SVG) —
+  there's no automated build script for this yet, so after editing
+  `src/`, regenerate these by hand (or ask Claude to do it) if the
+  live site needs to match.
