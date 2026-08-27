@@ -74,11 +74,16 @@ ask Claude to.
   `.lead` for intro paragraphs; a `.eyebrow` (green) above page
   titles and a small uppercase kicker (`.r-block > h2`,
   `.cs-section h3`, `.section-label`) for in-page section labels.
-- **Layout:** `.container` (1160px) for nav + footer on every page;
-  `.container-narrow` (760px) for the reading column on About / Resume
-  / Case studies; Home keeps a wider hero; Contact uses the full
-  `.container` as a two-column grid (copy left, card right) that
-  stacks below 720px. `.page` is a flex column with a sticky footer;
+- **Layout:** every page shares one left rail. `.container` (1160px,
+  centred) holds the nav and footer; `.container-narrow` uses the same
+  1160px box and caps its children at 760px (`.container-narrow > *`),
+  so the reading column starts at the *same* left edge as the nav bar
+  and footer links on every page rather than being centred. Each page
+  opens with a `.eyebrow` label ("Senior UX Researcher" / "About" /
+  "Resume" / "Contact" / "Case studies") at an identical x/y, then the
+  heading. Contact is the same 1160 box as a two-column grid (copy
+  left, card right) that stacks below 720px; Home keeps a wider hero.
+  `.page` is a flex column with a sticky footer;
   `html { overflow-y: scroll }` reserves the scrollbar gutter so
   nothing shifts between short and tall pages.
 - **Components:** one `.card` recipe (radius 16, soft shadow, fluid

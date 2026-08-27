@@ -49,7 +49,8 @@
   .page { position: relative; min-height: 100vh; display: flex; flex-direction: column; }
   main { position: relative; z-index: 2; flex: 1; }
   .container { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
-  .container-narrow { max-width: 760px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow > * { max-width: 760px; }
 
   .topo-bg { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   /* the "lantern" — the topo map is fog by default; the cursor is the headlamp
@@ -140,8 +141,8 @@
   }
 
   /* ---- case studies ---- */
-  main { padding: clamp(48px, 8vw, 72px) 0 0; }
-  .gate { max-width: 440px; margin: clamp(24px, 6vh, 64px) auto 0; background: var(--surface);
+  main { padding: clamp(52px, 9vw, 92px) 0 0; }
+  .gate { max-width: 460px; margin: clamp(8px, 3vh, 28px) 0 0; background: var(--surface);
     border-radius: var(--radius); padding: clamp(28px, 5vw, 40px); box-shadow: var(--shadow); text-align: center; }
   .gate .eyebrow { color: var(--muted); margin-bottom: 14px; }
   .gate h1 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 12px; }
@@ -257,6 +258,7 @@
       </section>
 
       <div id="content" hidden>
+        <div class="eyebrow">Case studies</div>
         <div class="cs-head">
           <h1 class="display">A few trails I've mapped</h1>
           <button id="lock-btn" class="lock-btn" type="button">Lock again</button>

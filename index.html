@@ -48,7 +48,8 @@
   .page { position: relative; min-height: 100vh; display: flex; flex-direction: column; }
   main { position: relative; z-index: 2; flex: 1; }
   .container { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
-  .container-narrow { max-width: 760px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow > * { max-width: 760px; }
 
   .topo-bg { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   /* the "lantern" — the topo map is fog by default; the cursor is the headlamp

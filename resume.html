@@ -48,7 +48,8 @@
   .page { position: relative; min-height: 100vh; display: flex; flex-direction: column; }
   main { position: relative; z-index: 2; flex: 1; }
   .container { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
-  .container-narrow { max-width: 760px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow > * { max-width: 760px; }
 
   .topo-bg { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   /* the "lantern" — the topo map is fog by default; the cursor is the headlamp
@@ -139,7 +140,7 @@
   }
 
   /* ---- resume ---- */
-  main { padding: clamp(48px, 8vw, 72px) 0 0; }
+  main { padding: clamp(52px, 9vw, 92px) 0 0; }
   .r-name { font-size: clamp(2rem, 1.4rem + 2.6vw, 2.75rem); line-height: 1.08; margin: 0; }
   .r-role { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 12px 0 0; }
   .r-lede { font-size: 1.1rem; line-height: 1.62; color: var(--text-soft); margin: 20px 0 0; max-width: 60ch; }
@@ -248,6 +249,7 @@
     <div class="container-narrow">
 
       <header>
+        <div class="eyebrow">Resume</div>
         <h1 class="display r-name">Dan Jecan</h1>
         <p class="r-role">Senior UX Researcher &nbsp;·&nbsp; Budapest, Hungary</p>
         <p class="r-lede">
