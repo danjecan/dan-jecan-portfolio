@@ -61,8 +61,13 @@ to the others.
   column with a sticky footer; `html { overflow-y: scroll }` reserves
   the scrollbar gutter.
 - **Cursor:** the OS cursor is untouched for reading; on hover over
-  interactive elements a small hollow rust ring shows via an inline
-  SVG data-URI, gated to `@media (hover: hover) and (pointer: fine)`.
+  anything interactive (`a[href]`, `button`, `[role="button"]`, `.btn`,
+  `.case-row`, `.cs-tab`) it becomes a small compass, an inline SVG
+  data-URI, gated to `@media (hover: hover) and (pointer: fine)`. The
+  selectors are `.page`-prefixed so they beat components that set their
+  own `cursor`. The Home "you are here" pin swaps in the same compass
+  via the page script, since the pin overlay sits below the content
+  layer and can't be reached with `:hover`.
 
 ## Topographic backgrounds
 
