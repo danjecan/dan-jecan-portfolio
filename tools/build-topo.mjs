@@ -108,10 +108,23 @@ for (const p of PAGES) {
     .map((lv) => `      <path d="${lv.d}" opacity="${STROKE_OPACITY}" stroke-width="${lv.indexLine ? '1.1' : '0.7'}"></path>`)
     .join('\n');
 
+  // A dotted route that climbs the dominant hill to the summit pin and crests
+  // down the far side into the distance. Tuned to index.html's focal (1040, 360);
+  // retune the control points if that bump moves. Lives in #topoLayer so it
+  // parallax-drifts with the contours (and the pin, which mirrors the drift).
+  let trail = '';
+  if (p.peak) {
+    trail =
+      `\n      <path d="M180,908 C330,884 384,800 520,772 C690,738 660,612 800,560 C928,514 946,428 1036,362"` +
+      ` stroke="#B85C3C" stroke-width="2.5" stroke-dasharray="0.4 7" opacity="0.62"></path>` +
+      `\n      <path d="M1046,360 C1128,326 1200,300 1274,258 C1352,214 1402,250 1472,214 C1522,188 1556,196 1588,184"` +
+      ` stroke="#B85C3C" stroke-width="1.8" stroke-dasharray="0.4 5.5" opacity="0.36"></path>`;
+  }
+
   const svg =
     `<svg class="topo-bg" viewBox="0 0 ${VIEW_W} ${VIEW_H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">\n` +
     `    <g id="topoLayer" fill="none" stroke="#4B5D45" stroke-linejoin="round" stroke-linecap="round">\n` +
-    `${paths}\n` +
+    `${paths}${trail}\n` +
     `    </g>\n  </svg>`;
 
   html = html.replace(SVG_RE, svg);
