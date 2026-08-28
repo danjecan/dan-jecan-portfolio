@@ -1,5 +1,1 @@
 .DS_Store
-
-# Real (confidential) case-study copy — only the encrypted blob in
-# case-studies.html is committed. Keep a private backup of this file.
-tools/case-studies.content.json

@@ -1,7 +1,7 @@
 # Dan Jecan Portfolio
 
 Portfolio site for Dan Jecan, Senior UX Researcher — Home, About,
-Resume, Contact, and password-protected case studies, themed around a
+Resume, Contact, and case studies, themed around a
 generated topographic-map motif. The Home / About / Contact pages
 started life on a Claude Design canvas (`src/`); Resume and Case
 studies are static-only additions in the same visual language.
@@ -27,8 +27,8 @@ studies are static-only additions in the same visual language.
     have the LinkedIn link. `@media print` still strips the chrome for
     Ctrl-P. Content transcribed from Dan's resume + LinkedIn export
     (Aug 2026); phone number deliberately omitted from this public page.
-  - `case-studies.html` — password-gated. See below.
-- `tools/` — `build-case-studies.mjs` (case-studies encryption, see
+  - `case-studies.html` — a tabbed panel of six write-ups. See below.
+- `tools/` — `build-case-studies.mjs` (injects the case-study JSON, see
   below) and `build-topo.mjs` / `topo-core.mjs` (topo backgrounds, see
   "Topographic backgrounds").
 - `src/` — the editable Claude Design source. Each `*.dc.html` file is
@@ -95,42 +95,36 @@ ask Claude to.
   `@media (hover: hover) and (pointer: fine)` with a `, pointer`
   fallback.
 
-## Case studies (password-protected)
+## Case studies
 
 The Wizz Air / Cisco / Brenntag / Bosch / Netflix / Medocity write-ups
-are confidential. `case-studies.html` only ever ships an **AES-GCM
-ciphertext** — the plaintext is never in the published HTML. A visitor
-types the password, the browser derives a key (PBKDF2-SHA256, 150k
-iterations) and decrypts client-side. Unlock is remembered for the
-browser session (`sessionStorage`); closing the tab clears it. There is
-no visible "lock again" control.
+are **public**. `tools/case-studies.content.json` is the source; it is
+the *declassified* copy — no client metrics, no internal system names,
+no attributed failures. `case-studies.html` is a **tabbed panel**, one
+case study at a time, one tab per client, deep-linkable
+(`case-studies.html#netflix`, and the Home page's case rows link
+straight to the matching tab), arrow-key navigable.
 
-The unlocked view is a **tabbed panel** — one case study at a time,
-one tab per client, deep-linkable (`case-studies.html#netflix`, and the
-Home page's case rows link straight to the matching tab),
-arrow-key navigable. Each study follows the same shape (see
+Each study follows the same shape (see
 `tools/case-studies.content.example.json`): `key`, `company` (the tab
 label), `title`, `summary`, an optional `meta` (`role`, `team`,
-`timeline`, `methods[]` — rendered as a line + chips), and a `sections`
-array of `{ "h": heading, "body": text }` (blank line between
-paragraphs). Keep each study to ~one screen — enough to keep a
+`timeline`, `methods[]` — rendered as stacked lines + method chips),
+and a `sections` array of `{ "h": heading, "body": text }` (blank line
+between paragraphs). Keep each study to ~one screen — enough to keep a
 recruiter interested, not a full report.
 
-To publish real content:
+To edit:
 
-1. `cp tools/case-studies.content.example.json tools/case-studies.content.json`
-   (the real file is `.gitignore`d — keep a private backup).
-2. Fill in `tools/case-studies.content.json`, one study per entry in
+1. Edit `tools/case-studies.content.json`, one study per entry in
    `studies[]`, all to the same shape.
-3. `CASE_STUDIES_PASSWORD='the real password' node tools/build-case-studies.mjs`
-   — this re-encrypts and rewrites the `CS_PAYLOAD` block in
-   `case-studies.html`.
-4. Commit `case-studies.html`. Share the password out-of-band (the
-   Contact page tells people to email for it).
+2. `node tools/build-case-studies.mjs` — injects the JSON into
+   `case-studies.html` as plain `CS_DATA` between the `/*CS_DATA…*/`
+   markers.
+3. Commit `case-studies.html` (and the JSON).
 
-Shipped as-is, the page is encrypted under the placeholder password
-`preview` with placeholder text, so the flow is testable but nothing
-real is exposed.
+There used to be a password gate (AES-GCM ciphertext, client-side
+PBKDF2 decrypt). It was dropped once the content was declassified —
+`git log` has the history if it's ever wanted back.
 
 ## Resuming work
 

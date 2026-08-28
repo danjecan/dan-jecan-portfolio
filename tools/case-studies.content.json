@@ -1,0 +1,279 @@
+{
+  "_readme": "Public case-study content. Edit here, then run `node tools/build-case-studies.mjs` to inject it into case-studies.html as plain CS_DATA. This is the DECLASSIFIED version: no client metrics, no internal system names, no attributed failures. Keep every study to the SAME shape and roughly one screen of text, enough to keep a recruiter interested, not a full report.",
+  "_template": {
+    "key": "short-lowercase-id (used in the URL hash, e.g. #bosch)",
+    "company": "Client name, becomes the tab label, keep it short",
+    "title": "One phrase, the case study's headline",
+    "summary": "One sentence: what the project was + the outcome.",
+    "meta": {
+      "role": "e.g. Lead UX Researcher",
+      "team": "optional, e.g. 2 (researcher + designer) plus the client's product team",
+      "timeline": "e.g. 6 weeks",
+      "methods": ["3 to 5 short method tags", "e.g. Usability testing", "Journey mapping"]
+    },
+    "sections": [
+      { "h": "Context", "body": "1 to 2 sentences: the product/team and why this mattered." },
+      { "h": "The question", "body": "One line: the decision the research had to inform." },
+      { "h": "Approach", "body": "1 to 2 sentences: methods + scale (how many participants, which markets, how many rounds)." },
+      { "h": "What we found", "body": "2 to 3 punchy findings. Separate paragraphs with a blank line." },
+      { "h": "Impact", "body": "1 to 2 sentences: what changed, what shipped, or the decision it drove." }
+    ]
+  },
+  "studies": [
+    {
+      "key": "wizzair",
+      "company": "Wizz Air",
+      "title": "Building a testing habit on the booking flow",
+      "summary": "Over about 18 months embedded with Wizz Air's conversion team, I turned research from an occasional request into a standing part of how the booking flow shipped.",
+      "meta": {
+        "role": "Embedded UX Researcher",
+        "team": "Part of a shared research function, embedded in the Conversion Optimisation team",
+        "timeline": "About 18 months",
+        "methods": [
+          "Usability testing",
+          "Preference testing",
+          "Crowdsourced QA",
+          "Analytics",
+          "Research ops"
+        ]
+      },
+      "sections": [
+        {
+          "h": "Context",
+          "body": "Wizz Air's Conversion Optimisation team owned the booking funnel and shipped changes fast. Research existed as a shared function but was pulled in late, if at all, so design decisions leaned on opinion and analytics alone."
+        },
+        {
+          "h": "The question",
+          "body": "Which proposed changes actually help people book, and how do we catch the ones that quietly break the flow before they ship?"
+        },
+        {
+          "h": "Approach",
+          "body": "I ran moderated usability tests on flows in progress and introduced preference testing so the team could choose between design options on evidence. As a last check before release, I set up crowdsourced testing through test.io across real devices and browsers. Alongside the studies I built the operational side: a Product Design Training programme, a UX Research Toolbox for the team, and a step in the planning tool that made product managers state whether a change needed research."
+        },
+        {
+          "h": "What we found",
+          "body": "The pre-release testing repeatedly caught defects that had slipped through, including one that blocked booking entirely on Chrome for Android, serious enough to need a same-day fix.\n\nTeams were making preference calls between designs with no user input, and were happy to switch to testing once it was quick to run."
+        },
+        {
+          "h": "Impact",
+          "body": "Research became a standing input rather than a favour. The team moved to a dual-track way of working, testing shifted earlier and became routine, and the work contributed to a measurable rise in booking conversion, a result the whole team shares."
+        }
+      ]
+    },
+    {
+      "key": "cisco",
+      "company": "Cisco",
+      "title": "Shaping the topology view for Cisco Nexus Cloud",
+      "summary": "As one of two researchers on the founding design team for Cisco Nexus Cloud, I ran concept and usability research on its network topology view. The feature shipped in Nexus Dashboard, and Cisco patented the pin-and-trace interaction it produced.",
+      "meta": {
+        "role": "Embedded UX Researcher",
+        "team": "With a product designer and a second researcher, inside Cisco's Cloud Networking design team",
+        "timeline": "About 1 year",
+        "methods": [
+          "Concept testing",
+          "Usability testing",
+          "Interviews",
+          "Preference testing",
+          "Surveys"
+        ]
+      },
+      "sections": [
+        {
+          "h": "Context",
+          "body": "Cisco Nexus Cloud is a SaaS product for monitoring, securing and optimising company networks, aimed at network administrators, cloud architects and similar specialists. I joined the initial design team building the first concepts. The feature I spent most time on was the topology view, an interactive map of a company's data-centre network."
+        },
+        {
+          "h": "The question",
+          "body": "Would a visual topology map actually help these specialists work faster, and was it usable enough for an audience that is deeply technical and distrusts anything that hides detail?"
+        },
+        {
+          "h": "Approach",
+          "body": "The domain is hard to enter, so the research was mostly evaluative: concept tests to check an idea was worth pursuing, then usability tests once a direction held, each session opening with a short interview about the person's jobs to be done. The product was confidential and we had no direct line to customers, so we recruited internally and through partners, mostly people doing day-two network support. Surveys and preference tests added scale. The topology concept ran through several rounds of iteration."
+        },
+        {
+          "h": "What we found",
+          "body": "The graphical view landed. People could read connectivity between parts of their infrastructure at a glance, and drill into an object without losing their place. One partner put it as \"if I show someone on day-two support this, I can literally sell it.\"\n\nThe most valued piece was endpoint-to-endpoint trace across sites. It solved a slow, common problem: you know the two endpoints but not why they cannot talk.\n\nThat same feature was the weak point. Almost every participant failed to discover the pin-and-trace mechanism and had to be nudged to it. Making it discoverable became the main fix before rollout. Search was the browsing method people reached for first, and colour-only anomaly signalling came up as an accessibility risk."
+        },
+        {
+          "h": "Impact",
+          "body": "The topology work shipped in Cisco's Nexus Dashboard. The pin-and-trace interaction was filed by Cisco as a US patent, granted in 2024, with a follow-on patent in 2025; the product lead publicly credited the UX team, including me, as contributors to the patented concepts. My part was the research and the user-facing interaction decisions, not the underlying system."
+        },
+        {
+          "h": "What I'd do differently",
+          "body": "We leaned almost entirely on evaluative research because customer access was tight. I would still fight for a little upfront generative work, even a handful of contextual interviews, so the early concept bets rested on more than the product manager's read of the users."
+        }
+      ]
+    },
+    {
+      "key": "brenntag",
+      "company": "Brenntag",
+      "title": "Making an AI recommendation tool one that account managers trust",
+      "summary": "Brenntag had an internal machine-learning tool that told account managers which customers to contact and what to offer, but experienced users did not trust it. I set up research on the team and used it to drive a full redesign and a rethink of how the predictions were shown.",
+      "meta": {
+        "role": "UX lead and researcher, embedded",
+        "team": "Embedded with engineers, data scientists and a designer on the product team",
+        "timeline": "3-year engagement",
+        "methods": [
+          "Stakeholder interviews",
+          "Discovery interviews",
+          "Concept testing",
+          "Surveys",
+          "Analytics",
+          "Satisfaction tracking"
+        ]
+      },
+      "sections": [
+        {
+          "h": "Context",
+          "body": "The tool predicted, for each customer, churn risk, the best time to reorder a product, and what else to offer. Several hundred account managers across the US and Western Europe were the users, most with six to ten years on the job. Adoption was low."
+        },
+        {
+          "h": "The question",
+          "body": "Why do experienced account managers not act on the recommendations, and what would make the tool part of how they plan their week?"
+        },
+        {
+          "h": "Approach",
+          "body": "I built the research function on the team from nothing and ran it through a full cycle: stakeholder interviews to understand the data and its limits, two rounds of discovery interviews with account managers in the UK, US and Poland, a survey on how they plan and prioritise, concept testing on the redesign, then analytics and satisfaction tracking once it shipped. I took part in every sprint ceremony, including refinements, to keep the user in the room when decisions were made."
+        },
+        {
+          "h": "What we found",
+          "body": "The core problem was the black box. Predictions arrived with no reasoning, so when one looked wrong, users had no way to check it and stopped trusting the rest.\n\nThe tool was adding work, not saving it. People still cross-checked every prediction against other reports, and entered similar data into it and their CRM.\n\nAccount managers were being pushed toward retention, but they judge themselves on growth too. Some indicators, like a bare churn-risk percentage, carried no context and were ignored."
+        },
+        {
+          "h": "Impact",
+          "body": "The findings shaped a full redesign: a three-level structure for the interface, predictions shown with the data behind them, a retention-versus-growth switch, and a projected 12-month value on each recommendation. Research went from absent to the team's reference point for user questions, and the work fed the team's sales-uplift goals. I also helped set up a shared research repository for the wider team."
+        },
+        {
+          "h": "What I'd do differently",
+          "body": "The trust problem showed up in interviews early, but for a while we treated it as a communication fix before accepting that the prediction models themselves had to change. I would put that structural question to the data-science team sooner."
+        }
+      ]
+    },
+    {
+      "key": "bosch",
+      "company": "Bosch",
+      "title": "Validating a new digital business for Bosch Power Tools",
+      "summary": "Bosch wanted to test one digital-business idea for the Hungarian market and build their own team's ability to run this kind of validation. The research reframed the concept around quality certification and produced a clear recommendation to build.",
+      "meta": {
+        "role": "UX Researcher",
+        "team": "2 (researcher and designer/lead) plus Bosch's Business Model Innovation team",
+        "timeline": "7 weeks",
+        "methods": [
+          "Field & lab interviews",
+          "Fake-door test",
+          "Concept & prototype testing",
+          "Business Model Canvas",
+          "Value Proposition Canvas"
+        ]
+      },
+      "sections": [
+        {
+          "h": "Context",
+          "body": "Bosch is strong in power tools but has little digital-product capability in-house. Through UX studio they asked us to pressure-test a two-sided platform that matches tradespeople with clients, aimed at the Hungarian market. Just as important, they wanted their Business Model Innovation team trained to run this kind of validation themselves next time."
+        },
+        {
+          "h": "The question",
+          "body": "Is there a real, unmet need on both sides of this marketplace, and if so, is the concept strong enough to justify building it? I ran the work around the business model rather than the interface, since the decision to build or walk away depended on whether the whole value proposition held."
+        },
+        {
+          "h": "Approach",
+          "body": "Seven weeks. We opened with a three-day canvas workshop with Bosch's team to make every assumption explicit, then spent about two weeks interviewing clients and tradespeople, in our lab and in the field at a tool supplier, since tradespeople are hard to reach online. For evaluation I first ran a fake-door landing-page test of the value propositions. When sign-ups came back near zero and the data proved uninformative, I switched to concept testing: a storyboard walkthrough of the service with a Figma prototype embedded at the key step. I also owned the Business Model and Value Proposition Canvases end to end."
+        },
+        {
+          "h": "What we found",
+          "body": "Clients don't distrust tradespeople in general. They distrust their own ability to tell a good one from a bad one, so they fall back on referrals from friends and family.\n\nGood tradespeople aren't short of work. Their problem is signalling quality in a market crowded with poor operators.\n\nBoth problems point to the same answer: build the platform around quality certification rather than plain matching. A recognised mark of quality reassures clients, and gives vetted tradespeople the differentiation they lack."
+        },
+        {
+          "h": "Impact",
+          "body": "The research shifted the brief from a plain matching marketplace to a trust-led model and delivered a clear recommendation to build, with the thin supply of quality tradespeople named as the main risk. Bosch's team left able to run the same validation cycle themselves."
+        },
+        {
+          "h": "What I'd do differently",
+          "body": "The fake-door test failed partly on framing. A \"notify me when it launches\" call to action fits neither someone with an urgent job nor someone with no job at all. I'd test intent where it actually lives, in search, rather than on social."
+        }
+      ]
+    },
+    {
+      "key": "netflix",
+      "company": "Netflix",
+      "title": "Where 3-D Secure breaks down at payment",
+      "summary": "Netflix wanted to know where and why new sign-ups fail during 3-D Secure bank authentication across Europe. The research mapped the friction points and pushed several of the fixes back to the card issuers.",
+      "meta": {
+        "role": "UX Researcher, research lead",
+        "team": "2 (researcher and designer) with Netflix's payments team",
+        "timeline": "About 3 months",
+        "methods": [
+          "Multi-country survey",
+          "Moderated interviews",
+          "Live payment testing",
+          "Drop-off analysis"
+        ]
+      },
+      "sections": [
+        {
+          "h": "Context",
+          "body": "3-D Secure, part of Europe's Strong Customer Authentication rules, adds a bank verification step during checkout. It cuts fraud, but every extra step is a chance to lose a genuine new subscriber. Netflix's payments team needed to see that step through the user's eyes."
+        },
+        {
+          "h": "The question",
+          "body": "Where in the 3-D Secure flow do new subscribers drop out, and which of those failures can Netflix actually influence?"
+        },
+        {
+          "h": "Approach",
+          "body": "Two strands run together. A large multi-country survey across seven European markets sized the problem. Then around 40 moderated interviews where participants made a real Netflix payment on their own card and hit the real bank authentication screen, so we saw genuine reactions rather than a mock-up. Drop-off was compared market by market."
+        },
+        {
+          "h": "What we found",
+          "body": "Drop-off during authentication varied widely between markets, far higher in some than in others.\n\nThe bank's own screen was the weakest link. It looks unbranded and unfamiliar mid-checkout, so people distrust it and abandon.\n\nOthers failed for practical reasons: the code goes to a phone that is not to hand, or the banking app is not set up. And the language of authentication, \"verify\", \"authenticate\", does not tell people this is about their payment going through."
+        },
+        {
+          "h": "Impact",
+          "body": "Netflix used the findings to push for a clearer hand-off to the bank page and payment-focused wording. Because several of the worst friction points sit inside the bank's screen rather than Netflix's, the payments team took the evidence to card issuers about challenges that were set too hard."
+        }
+      ]
+    },
+    {
+      "key": "medocity",
+      "company": "Medocity",
+      "title": "A patient-first read on a clinical-trial platform",
+      "summary": "Medocity's platform for running clinical trials remotely had grown complex for the two groups who live in it, patients and trial investigators. Discovery research produced personas, a journey map, and a clear case for a redesign rather than a reskin.",
+      "meta": {
+        "role": "Researcher and UX lead",
+        "team": "Solo through discovery, then with a designer",
+        "timeline": "6-week discovery, then ongoing",
+        "methods": [
+          "Patient interviews",
+          "Investigator interviews",
+          "Personas",
+          "Journey mapping"
+        ]
+      },
+      "sections": [
+        {
+          "h": "Context",
+          "body": "Medocity, a US health-tech company, builds a platform for decentralised clinical trials, the model where participants take part from home instead of travelling to a site. Two very different groups depend on it: patients enrolled in a trial, and the investigators and coordinators who run it. Years of added features had made it heavy for both."
+        },
+        {
+          "h": "The question",
+          "body": "Where does the platform pull away from what patient-centred trial care actually needs, and is that a redesign or a lighter fix?"
+        },
+        {
+          "h": "Approach",
+          "body": "A six-week discovery, running solo, then joined by a designer. Interviews with patients and with trial investigators, worked up into three patient personas and a journey map of the trial from a patient's point of view."
+        },
+        {
+          "h": "What we found",
+          "body": "For patients, the trial is a burden layered on being unwell. Many do not feel sick day to day, so admin-heavy check-ins feel disproportionate, and people want proactive guidance and a sense of community rather than forms.\n\nFor investigators, running a trial means juggling four to six separate tools. Hybrid trials mean doing the same work twice, once on paper and once in the system, and basic friction like 90-day password resets gets in the way."
+        },
+        {
+          "h": "Impact",
+          "body": "The research made the case that the platform needed a redesign, not a facelift. Stakeholders did not align on that scope, the design lead left, and the engagement was paused, so the direction was not carried through."
+        },
+        {
+          "h": "What I'd do differently",
+          "body": "I aligned closely with our immediate stakeholders but not with everyone who held a view on scope. I would get every decision-maker to agree, in writing, on what the project is and is not before the research starts, so the findings land in a team that is ready to act on them."
+        }
+      ]
+    }
+  ]
+}

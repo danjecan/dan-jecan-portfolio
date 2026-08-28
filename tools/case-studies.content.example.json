@@ -1,5 +1,5 @@
 {
-  "_readme": "Real case-study content. Copy to case-studies.content.json (gitignored), fill it in, then run `node tools/build-case-studies.mjs` to re-encrypt into case-studies.html. Only the AES-GCM ciphertext is committed. Keep every study to the SAME shape and roughly one screen of text. Enough to keep a recruiter interested, not a full report.",
+  "_readme": "Shape reference for tools/case-studies.content.json. Edit that file, then run `node tools/build-case-studies.mjs` to inject it into case-studies.html as plain CS_DATA. The published content is DECLASSIFIED: no client metrics, no internal system names, no attributed failures. Keep every study to the SAME shape and roughly one screen of text. Enough to keep a recruiter interested, not a full report.",
   "_template": {
     "key": "short-lowercase-id (used in the URL hash, e.g. #bosch)",
     "company": "Client name (becomes the tab label, keep it short)",
