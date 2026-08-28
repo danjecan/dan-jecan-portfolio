@@ -121,12 +121,14 @@ for (const p of PAGES) {
     // Hit target first so the CSS `~` sibling combinator can reach the dot + label.
     const pinSvg =
       `<svg class="pin-layer" viewBox="0 0 ${VIEW_W} ${VIEW_H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">\n` +
-      `    <circle class="pin-hit" cx="${cx}" cy="${cy}" r="30"></circle>\n` +
-      `    <circle class="pin-solid" cx="${cx}" cy="${cy}" r="4" fill="#B85C3C" stroke="none"></circle>\n` +
-      `    <circle class="pin-dot" cx="${cx}" cy="${cy}" r="4" fill="none" stroke="#B85C3C" stroke-width="1.3"></circle>\n` +
-      `    <g class="pin-label">\n` +
-      `      <line x1="${cx - 8}" y1="${cy}" x2="${cx - 34}" y2="${cy}"></line>\n` +
-      `      <text x="${cx - 40}" y="${cy}" text-anchor="end" dominant-baseline="middle">YOU ARE HERE</text>\n` +
+      `    <g id="pinShift">\n` +
+      `      <circle class="pin-hit" cx="${cx}" cy="${cy}" r="30"></circle>\n` +
+      `      <circle class="pin-solid" cx="${cx}" cy="${cy}" r="4" fill="#B85C3C" stroke="none"></circle>\n` +
+      `      <circle class="pin-dot" cx="${cx}" cy="${cy}" r="4" fill="none" stroke="#B85C3C" stroke-width="1.3"></circle>\n` +
+      `      <g class="pin-label">\n` +
+      `        <line x1="${cx - 8}" y1="${cy}" x2="${cx - 34}" y2="${cy}"></line>\n` +
+      `        <text x="${cx - 40}" y="${cy}" text-anchor="end" dominant-baseline="middle">YOU ARE HERE</text>\n` +
+      `      </g>\n` +
       `    </g>\n  </svg>`;
     if (PIN_RE.test(html)) html = html.replace(PIN_RE, pinSvg);
     else console.error(`  ✗  ${p.file}: no <svg class="pin-layer"> found — add the placeholder element`);
