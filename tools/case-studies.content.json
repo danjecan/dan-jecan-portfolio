@@ -60,7 +60,7 @@
         "methods": [
           "Moderated usability testing",
           "Preference testing",
-          "Crowdsourced device testing",
+          "Crowdsource testing",
           "Analytics",
           "Research operations"
         ]
@@ -76,7 +76,7 @@
         },
         {
           "h": "Approach",
-          "body": "I worked from inside the team rather than taking tickets. Moderated usability sessions on flows that were still in Figma, so feedback arrived while it was cheap to act on. Preference testing when the team was split between two designs and going in circles, which turned an argument into a number. And a crowdsourced pass on real devices as the last gate before release, aimed at the browser and device combinations nobody checked by hand.\n\nAlongside the studies I spent time on the plumbing, because one researcher cannot keep up with a team that ships weekly. I ran a short training so designers could moderate their own quick tests, put together a toolbox they could pull methods from, and got a field added to the planning tool that made a product manager state, in writing, whether a change needed research before it could move forward."
+          "body": "I worked from inside the team rather than taking tickets. Moderated usability sessions on flows that were still in Figma, so feedback arrived while it was cheap to act on. Preference testing when the team was split between two designs and going in circles, which turned an argument into a number. And crowdsource testing on real devices as the last gate before release, aimed at the browser and device combinations nobody checked by hand.\n\nAlongside the studies I spent time on the plumbing, because one researcher cannot keep up with a team that ships weekly. I ran a short training so designers could moderate their own quick tests, put together a toolbox they could pull methods from, and got a field added to the planning tool that made a product manager state, in writing, whether a change needed research before it could move forward."
         },
         {
           "h": "What we found",
