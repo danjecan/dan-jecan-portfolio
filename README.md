@@ -97,10 +97,15 @@ straight to the matching tab), arrow-key navigable.
 
 Each study follows the same shape (see
 `tools/case-studies.content.example.json`): `key`, `company` (the tab
-label), `title`, `summary`, an optional `meta` (`role`, `team`,
-`timeline`, `methods[]` — rendered as stacked lines + method chips),
-and a `sections` array of `{ "h": heading, "body": text }` (blank line
-between paragraphs). Keep each study to ~one screen.
+label), `title`, `summary` (a short lead), an optional `pull` (a
+participant quote if `by` is set, otherwise a one-line takeaway,
+dropped in after "What we found"), a `meta` block (`role`, `team`,
+`timeline`, `methods[]`, rendered as a small card plus method chips),
+and a `sections` array of `{ "h": heading, "body": text }` with the
+same six headings every time (Context, The question, Approach, What we
+found, Impact, What I'd do differently) so the studies stay scannable
+side by side. "What I'd do differently" renders as a tinted reflection
+block. Blank line between paragraphs in a body.
 
 To edit: change `tools/case-studies.content.json`, run
 `node tools/build-case-studies.mjs` (it injects the JSON into
