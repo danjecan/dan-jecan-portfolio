@@ -173,8 +173,8 @@
   .cs-company { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
   .cs-title { font-size: clamp(1.2rem, 1rem + .8vw, 1.4rem); line-height: 1.25; font-weight: 700; color: var(--ink); margin: 0 0 8px; }
   .cs-summary { font-size: 1rem; line-height: 1.55; color: var(--text-soft); margin: 0; }
-  .cs-meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 14px 0 0; font-size: .85rem; color: var(--muted); }
-  .cs-meta .k { color: var(--text); font-weight: 700; margin-right: 5px; }
+  .cs-meta { display: flex; flex-direction: column; gap: 4px; margin: 14px 0 0; font-size: .85rem; color: var(--muted); }
+  .cs-meta .k { color: var(--text); font-weight: 700; margin-right: 6px; }
   .cs-methods { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
   .cs-methods span { font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-soft);
     background: var(--bg); border: 1px solid var(--rule); border-radius: var(--pill); padding: 4px 10px; }
@@ -322,7 +322,7 @@
     const bits = [];
     if (meta.role) bits.push('<span><span class="k">Role</span>' + escapeHtml(meta.role) + '</span>');
     if (meta.team) bits.push('<span><span class="k">Team</span>' + escapeHtml(meta.team) + '</span>');
-    if (meta.timeline) bits.push('<span><span class="k">When</span>' + escapeHtml(meta.timeline) + '</span>');
+    if (meta.timeline) bits.push('<span><span class="k">Duration</span>' + escapeHtml(meta.timeline) + '</span>');
     const methods = (meta.methods || []).map((m) => '<span>' + escapeHtml(m) + '</span>').join('');
     const sections = (s.sections || []).map((sec) => {
       const paras = String(sec.body || '')

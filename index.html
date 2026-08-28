@@ -72,6 +72,19 @@
   }
   .pin-dot { animation: pulse 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
   @keyframes pulse { 0% { r: 4px; opacity: .5; } 100% { r: 17px; opacity: 0; } }
+  /* "you are here" marker — its own overlay above the content layer so the
+     pointer can actually reach it; same viewBox + slice as .topo-bg. */
+  .pin-layer { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+  .pin-hit { fill: transparent; }
+  .pin-solid { transition: r .3s ease; }
+  .pin-label { opacity: 0; transition: opacity .3s ease; }
+  .pin-label text { fill: var(--rust); font: 700 14px 'Karla', ui-sans-serif, sans-serif; letter-spacing: 2px; }
+  .pin-label line { stroke: var(--rust); stroke-width: 1.3; stroke-dasharray: 2 3; }
+  @media (hover: hover) and (pointer: fine) {
+    .pin-hit { pointer-events: auto; }
+    .pin-hit:hover ~ .pin-solid { r: 6px; }
+    .pin-hit:hover ~ .pin-label { opacity: 1; }
+  }
 
   .nav-wrap { position: relative; z-index: 3; padding-top: 24px; }
   .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px;
@@ -224,13 +237,21 @@
       <path d="M1005.5,335.0Q1009.7,330.0 1009.8,329.9Q1010.0,329.7 1015.0,326.4Q1020.0,323.1 1025.0,321.6Q1030.0,320.0 1035.0,320.0Q1040.0,320.0 1045.0,321.5Q1050.0,323.0 1055.0,326.2Q1060.0,329.4 1060.3,329.7Q1060.6,330.0 1064.9,335.0Q1069.2,340.0 1069.6,340.7Q1070.0,341.4 1072.2,345.7Q1074.4,350.0 1075.9,355.0Q1077.4,360.0 1078.0,365.0Q1078.6,370.0 1078.4,375.0Q1078.1,380.0 1076.9,385.0Q1075.6,390.0 1073.3,395.0Q1070.9,400.0 1070.4,400.7Q1070.0,401.4 1066.0,405.7Q1062.1,410.0 1061.0,410.9Q1060.0,411.9 1055.0,414.6Q1050.0,417.3 1045.0,418.4Q1040.0,419.6 1035.0,419.4Q1030.0,419.2 1025.0,417.7Q1020.0,416.2 1015.0,413.2Q1010.0,410.2 1009.9,410.1Q1009.8,410.0 1005.1,405.0Q1000.5,400.0 1000.2,399.6Q1000.0,399.2 997.6,394.6Q995.2,390.0 993.9,385.0Q992.6,380.0 992.3,375.0Q992.0,370.0 992.6,365.0Q993.2,360.0 994.7,355.0Q996.2,350.0 998.1,346.2Q1000.0,342.5 1000.7,341.2Q1001.3,340.0 1005.5,335.0Z" opacity="0.6" stroke-width="0.7"></path>
       <path d="M1022.1,341.9Q1024.2,340.0 1027.1,338.4Q1030.0,336.7 1035.0,336.4Q1040.0,336.0 1044.4,338.0Q1048.9,340.0 1049.4,340.3Q1050.0,340.6 1054.1,345.3Q1058.1,350.0 1059.1,352.2Q1060.0,354.4 1061.1,357.2Q1062.2,360.0 1062.6,365.0Q1063.1,370.0 1062.1,375.0Q1061.1,380.0 1060.6,381.2Q1060.0,382.4 1057.2,386.2Q1054.3,390.0 1052.2,391.9Q1050.0,393.7 1045.0,395.2Q1040.0,396.6 1035.0,395.6Q1030.0,394.7 1026.5,392.3Q1023.0,390.0 1021.5,388.5Q1020.0,387.0 1017.8,383.5Q1015.5,380.0 1014.0,375.0Q1012.6,370.0 1012.6,365.0Q1012.6,360.0 1014.2,355.0Q1015.7,350.0 1017.9,346.9Q1020.0,343.9 1022.1,341.9Z" opacity="0.6" stroke-width="0.7"></path>
       <path d="M1033.7,365.0Q1031.1,360.0 1035.5,356.0Q1040.0,352.0 1043.6,356.0Q1047.3,360.0 1045.3,365.0Q1043.3,370.0 1041.6,371.3Q1040.0,372.5 1038.1,371.3Q1036.3,370.0 1033.7,365.0Z" opacity="0.6" stroke-width="0.7"></path>
-      <circle cx="1040" cy="360" r="4" fill="#B85C3C" stroke="none"></circle>
-      <circle class="pin-dot" cx="1040" cy="360" r="4" fill="none" stroke="#B85C3C" stroke-width="1.3"></circle>
     </g>
   </svg>
 
   <div class="scrim"></div>
   <div class="lamp" aria-hidden="true"></div>
+
+  <svg class="pin-layer" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <circle class="pin-hit" cx="1040" cy="360" r="30"></circle>
+    <circle class="pin-solid" cx="1040" cy="360" r="4" fill="#B85C3C" stroke="none"></circle>
+    <circle class="pin-dot" cx="1040" cy="360" r="4" fill="none" stroke="#B85C3C" stroke-width="1.3"></circle>
+    <g class="pin-label">
+      <line x1="1032" y1="360" x2="1006" y2="360"></line>
+      <text x="1000" y="360" text-anchor="end" dominant-baseline="middle">YOU ARE HERE</text>
+    </g>
+  </svg>
 
   <div class="nav-wrap">
     <div class="container">

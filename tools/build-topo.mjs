@@ -87,6 +87,11 @@ const PAGES = [
 ];
 
 const SVG_RE = /(<svg class="topo-bg"[^>]*>)([\s\S]*?)(<\/svg>)/;
+// The "you are here" marker lives in its own overlay SVG (same viewBox + slice,
+// so it lands on the exact spot) that sits ABOVE the content layer, otherwise the
+// pointer never reaches it. It is deliberately NOT inside #topoLayer, so it stays
+// put while the terrain parallax-drifts under it.
+const PIN_RE = /<svg class="pin-layer"[\s\S]*?<\/svg>/;
 
 for (const p of PAGES) {
   const path = join(ROOT, p.file);
@@ -103,21 +108,30 @@ for (const p of PAGES) {
     .map((lv) => `      <path d="${lv.d}" opacity="${STROKE_OPACITY}" stroke-width="${lv.indexLine ? '1.1' : '0.7'}"></path>`)
     .join('\n');
 
-  let circles = '';
-  if (p.peak) {
-    const { cx, cy } = p.bumps[0];
-    circles =
-      `\n      <circle cx="${cx}" cy="${cy}" r="4" fill="#B85C3C" stroke="none"></circle>` +
-      `\n      <circle class="pin-dot" cx="${cx}" cy="${cy}" r="4" fill="none" stroke="#B85C3C" stroke-width="1.3"></circle>`;
-  }
-
   const svg =
     `<svg class="topo-bg" viewBox="0 0 ${VIEW_W} ${VIEW_H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">\n` +
     `    <g id="topoLayer" fill="none" stroke="#4B5D45" stroke-linejoin="round" stroke-linecap="round">\n` +
-    `${paths}${circles}\n` +
+    `${paths}\n` +
     `    </g>\n  </svg>`;
 
   html = html.replace(SVG_RE, svg);
+
+  if (p.peak) {
+    const { cx, cy } = p.focal || p.bumps[0];
+    // Hit target first so the CSS `~` sibling combinator can reach the dot + label.
+    const pinSvg =
+      `<svg class="pin-layer" viewBox="0 0 ${VIEW_W} ${VIEW_H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">\n` +
+      `    <circle class="pin-hit" cx="${cx}" cy="${cy}" r="30"></circle>\n` +
+      `    <circle class="pin-solid" cx="${cx}" cy="${cy}" r="4" fill="#B85C3C" stroke="none"></circle>\n` +
+      `    <circle class="pin-dot" cx="${cx}" cy="${cy}" r="4" fill="none" stroke="#B85C3C" stroke-width="1.3"></circle>\n` +
+      `    <g class="pin-label">\n` +
+      `      <line x1="${cx - 8}" y1="${cy}" x2="${cx - 34}" y2="${cy}"></line>\n` +
+      `      <text x="${cx - 40}" y="${cy}" text-anchor="end" dominant-baseline="middle">YOU ARE HERE</text>\n` +
+      `    </g>\n  </svg>`;
+    if (PIN_RE.test(html)) html = html.replace(PIN_RE, pinSvg);
+    else console.error(`  ✗  ${p.file}: no <svg class="pin-layer"> found — add the placeholder element`);
+  }
+
   await writeFile(path, html);
-  console.log(`  ✓  ${p.file}: ${LEVELS} contour paths${circles ? ' + summit marker' : ''}`);
+  console.log(`  ✓  ${p.file}: ${LEVELS} contour paths${p.peak ? ' + "you are here" marker' : ''}`);
 }
