@@ -84,6 +84,17 @@ const PAGES = [
       { cx: 1400, cy: 880, amp: 0.30, r: 360, sy: 1.25, rot: 0.60 },
     ],
   },
+  {
+    file: '404.html',
+    bumps: [
+      { cx: 520, cy: 380, amp: 0.54, r: 400, sy: 1.35, rot: 0.40 },
+      { cx: 1180, cy: 300, amp: 0.40, r: 400, sy: 1.25, rot: -0.35 },
+      { cx: 260, cy: 820, amp: 0.34, r: 380, sy: 1.20, rot: 0.55 },
+      { cx: 1080, cy: 860, amp: 0.32, r: 360, sy: 1.30, rot: -0.50 },
+      { cx: 1440, cy: 700, amp: 0.30, r: 340, sy: 1.20, rot: 0.20 },
+      { cx: 820, cy: 90, amp: 0.24, r: 320, sy: 1.25, rot: 0.10 },
+    ],
+  },
 ];
 
 const SVG_RE = /(<svg class="topo-bg"[^>]*>)([\s\S]*?)(<\/svg>)/;
