@@ -131,11 +131,10 @@ for (const p of PAGES) {
 
   if (p.peak) {
     const { cx, cy } = p.focal || p.bumps[0];
-    // Hit target first so the CSS `~` sibling combinator can reach the dot + label.
+    // Sits below the content layer; hover is hit-tested in the page script.
     const pinSvg =
       `<svg class="pin-layer" viewBox="0 0 ${VIEW_W} ${VIEW_H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">\n` +
       `    <g id="pinShift">\n` +
-      `      <circle class="pin-hit" cx="${cx}" cy="${cy}" r="30"></circle>\n` +
       `      <circle class="pin-solid" cx="${cx}" cy="${cy}" r="4" fill="#B85C3C" stroke="none"></circle>\n` +
       `      <circle class="pin-dot" cx="${cx}" cy="${cy}" r="4" fill="none" stroke="#B85C3C" stroke-width="1.3"></circle>\n` +
       `      <g class="pin-label">\n` +

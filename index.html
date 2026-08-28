@@ -72,24 +72,17 @@
   }
   .pin-dot { animation: pulse 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
   @keyframes pulse { 0% { r: 4px; opacity: .5; } 100% { r: 17px; opacity: 0; } }
-  /* "you are here" marker — its own overlay above the content layer so the
-     pointer can actually reach it; same viewBox + slice as .topo-bg. It belongs
-     to the hero, so it fades out once you scroll past it rather than floating
-     over the rest of the page. */
-  .pin-layer { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 3;
-    pointer-events: none; transition: opacity .35s ease; }
-  .pin-layer.past-hero { opacity: 0; }
-  .pin-layer.past-hero .pin-hit { pointer-events: none; }
-  .pin-hit { fill: transparent; }
+  /* "you are here" marker — a fixed overlay pinned to the map. It sits ABOVE the
+     topo + scrim but BELOW the content layer, so opaque sections (the case list,
+     the footer) scroll up and cover it while the transparent hero lets it show
+     through. Hover is handled in JS since the content sits above it. */
+  .pin-layer { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
   .pin-solid { transition: r .3s ease; }
   .pin-label { opacity: 0; transition: opacity .3s ease; }
   .pin-label text { fill: var(--rust); font: 700 14px 'Karla', ui-sans-serif, sans-serif; letter-spacing: 2px; }
   .pin-label line { stroke: var(--rust); stroke-width: 1.3; stroke-dasharray: 2 3; }
-  @media (hover: hover) and (pointer: fine) {
-    .pin-hit { pointer-events: auto; }
-    .pin-hit:hover ~ .pin-solid { r: 6px; }
-    .pin-hit:hover ~ .pin-label { opacity: 1; }
-  }
+  #pinShift.is-hovered .pin-solid { r: 6px; }
+  #pinShift.is-hovered .pin-label { opacity: 1; }
 
   .nav-wrap { position: relative; z-index: 3; padding-top: 24px; }
   .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px;
@@ -251,7 +244,6 @@
 
   <svg class="pin-layer" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
     <g id="pinShift">
-      <circle class="pin-hit" cx="1040" cy="360" r="30"></circle>
       <circle class="pin-solid" cx="1040" cy="360" r="4" fill="#B85C3C" stroke="none"></circle>
       <circle class="pin-dot" cx="1040" cy="360" r="4" fill="none" stroke="#B85C3C" stroke-width="1.3"></circle>
       <g class="pin-label">
@@ -514,16 +506,15 @@
     })();
   }
 
-  // the "you are here" overlay is fixed so it can be hovered; fade it out once
-  // the hero is scrolled past so it doesn't hang over the rest of the page.
-  var pinLayer = document.querySelector('.pin-layer');
-  if (pinLayer) {
-    var syncPin = function () {
-      pinLayer.classList.toggle('past-hero', window.scrollY > window.innerHeight * 0.6);
-    };
-    window.addEventListener('scroll', syncPin, { passive: true });
-    window.addEventListener('resize', syncPin);
-    syncPin();
+  // hover the pin from JS: the content layer sits above the pin overlay, so a
+  // CSS :hover can't reach it. Toggle a class when the pointer is near the dot.
+  var pinSolid = pinShift && pinShift.querySelector('.pin-solid');
+  if (pinSolid && finePointer && !reduceMotion) {
+    window.addEventListener('mousemove', function (e) {
+      var r = pinSolid.getBoundingClientRect();
+      var d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+      pinShift.classList.toggle('is-hovered', d < 30);
+    });
   }
 
   var caseRows = document.querySelectorAll('.case-row');
