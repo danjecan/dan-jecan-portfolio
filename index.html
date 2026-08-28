@@ -108,7 +108,7 @@
 
   /* interactive-only accent cursor — a small hollow ring like the topo summit marker */
   @media (hover: hover) and (pointer: fine) {
-    a[href], button, [role="button"], label[for], summary, .case-row, .lock-btn {
+    a[href], button, [role="button"], label[for], summary, .case-row {
       cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'%20fill='none'%20stroke='%23B85C3C'%20stroke-width='2'/%3E%3Ccircle%20cx='12'%20cy='12'%20r='1.7'%20fill='%23B85C3C'/%3E%3C/svg%3E") 12 12, pointer;
     }
     button:disabled { cursor: not-allowed; }
@@ -265,8 +265,10 @@
     <div class="container">
       <div class="section-label">Trail companions</div>
       <div class="pill-row">
-        <span class="tag">Bosch</span>
         <span class="tag">Wizz Air</span>
+        <span class="tag">Cisco</span>
+        <span class="tag">Brenntag</span>
+        <span class="tag">Bosch</span>
         <span class="tag">Netflix</span>
         <span class="tag">Medocity</span>
       </div>
@@ -278,6 +280,72 @@
       <h2 class="display work-heading">A few trails I've mapped</h2>
       <p class="work-sub">Tap a row to read more.</p>
       <div class="case-list">
+
+        <div class="case-row" data-key="wizzair" role="button" tabindex="0" aria-expanded="false">
+          <div class="case-row-inner">
+            <div class="case-top">
+              <div class="case-icon-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
+                <div>
+                  <div class="case-company">Wizz Air</div>
+                  <div class="display case-title">CRO</div>
+                </div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"></path></svg>
+            </div>
+            <p class="case-desc">Optimizing conversion through continuous testing.</p>
+            <div class="expand-wrap">
+              <div class="expand-inner">
+                <p class="case-detail">Structured, continuous testing across the booking flow. The full write-up stays behind a password, for client confidentiality.</p>
+                <a class="case-link" href="case-studies.html#wizzair">Read the case study &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-row" data-key="cisco" role="button" tabindex="0" aria-expanded="false">
+          <div class="case-row-inner">
+            <div class="case-top">
+              <div class="case-icon-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
+                <div>
+                  <div class="case-company">Cisco</div>
+                  <div class="display case-title">Topology concept</div>
+                </div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"></path></svg>
+            </div>
+            <p class="case-desc">Concept and usability research for a new network product.</p>
+            <div class="expand-wrap">
+              <div class="expand-inner">
+                <p class="case-detail">Shaping the topology view that shipped in Nexus Dashboard. The full write-up stays behind a password, for client confidentiality.</p>
+                <a class="case-link" href="case-studies.html#cisco">Read the case study &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-row" data-key="brenntag" role="button" tabindex="0" aria-expanded="false">
+          <div class="case-row-inner">
+            <div class="case-top">
+              <div class="case-icon-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
+                <div>
+                  <div class="case-company">Brenntag</div>
+                  <div class="display case-title">AI adoption</div>
+                </div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"></path></svg>
+            </div>
+            <p class="case-desc">Making an ML recommendation tool one users trust.</p>
+            <div class="expand-wrap">
+              <div class="expand-inner">
+                <p class="case-detail">From a distrusted black box to a redesign built on the reasoning behind each prediction. The full write-up stays behind a password, for client confidentiality.</p>
+                <a class="case-link" href="case-studies.html#brenntag">Read the case study &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="case-row" data-key="bosch" role="button" tabindex="0" aria-expanded="false">
           <div class="case-row-inner">
@@ -295,29 +363,7 @@
             <div class="expand-wrap">
               <div class="expand-inner">
                 <p class="case-detail">From early ambiguity to a validated direction. The full write-up stays behind a password, for client confidentiality.</p>
-                <a class="case-link" href="case-studies.html">Read the case study &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-row" data-key="wizz" role="button" tabindex="0" aria-expanded="false">
-          <div class="case-row-inner">
-            <div class="case-top">
-              <div class="case-icon-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="1.8" style="flex-shrink:0;" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.5L10.5 10.5L9.5 14.5L13.5 13.5L14.5 9.5Z"></path></svg>
-                <div>
-                  <div class="case-company">Wizz Air</div>
-                  <div class="display case-title">CRO</div>
-                </div>
-              </div>
-              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7AF9B" stroke-width="2.2" style="flex-shrink:0;" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"></path></svg>
-            </div>
-            <p class="case-desc">Optimizing conversion through continuous testing.</p>
-            <div class="expand-wrap">
-              <div class="expand-inner">
-                <p class="case-detail">Structured, continuous testing across the booking flow. The full write-up stays behind a password, for client confidentiality.</p>
-                <a class="case-link" href="case-studies.html">Read the case study &rarr;</a>
+                <a class="case-link" href="case-studies.html#bosch">Read the case study &rarr;</a>
               </div>
             </div>
           </div>
@@ -339,7 +385,7 @@
             <div class="expand-wrap">
               <div class="expand-inner">
                 <p class="case-detail">Uncovering where 3DS authentication breaks down at the point of payment. The full write-up stays behind a password, for client confidentiality.</p>
-                <a class="case-link" href="case-studies.html">Read the case study &rarr;</a>
+                <a class="case-link" href="case-studies.html#netflix">Read the case study &rarr;</a>
               </div>
             </div>
           </div>
@@ -361,7 +407,7 @@
             <div class="expand-wrap">
               <div class="expand-inner">
                 <p class="case-detail">Setting a long-standing legacy platform on course for patient-centricity. The full write-up stays behind a password, for client confidentiality.</p>
-                <a class="case-link" href="case-studies.html">Read the case study &rarr;</a>
+                <a class="case-link" href="case-studies.html#medocity">Read the case study &rarr;</a>
               </div>
             </div>
           </div>
@@ -376,7 +422,7 @@
       <div class="confid-card">
         <div>
           <h3 class="display confid-title">Curious what's behind the ridge?</h3>
-          <p class="confid-text">The Bosch, Wizz Air, Netflix, and Medocity write-ups are password-protected out of respect for client confidentiality. Open the page and ask, and I'll share the map.</p>
+          <p class="confid-text">The Wizz Air, Cisco, Brenntag, Bosch, Netflix, and Medocity write-ups are password-protected out of respect for client confidentiality. Open the page and ask, and I'll share the map.</p>
         </div>
         <a class="btn btn-rust" href="case-studies.html">Open the case studies</a>
       </div>

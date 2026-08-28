@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Case studies · Dan Jecan</title>
-<meta name="description" content="Password-protected case studies: Bosch, Wizz Air, Netflix, and Medocity.">
+<meta name="description" content="Password-protected case studies: Wizz Air, Cisco, Brenntag, Bosch, Netflix, and Medocity.">
 <meta name="robots" content="noindex">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Domine:wght@500;600;700&family=Karla:wght@400;500;600;700&display=swap');
@@ -109,7 +109,7 @@
 
   /* interactive-only accent cursor — a small hollow ring like the topo summit marker */
   @media (hover: hover) and (pointer: fine) {
-    a[href], button, [role="button"], label[for], summary, .case-row, .lock-btn {
+    a[href], button, [role="button"], label[for], summary, .case-row {
       cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'%20fill='none'%20stroke='%23B85C3C'%20stroke-width='2'/%3E%3Ccircle%20cx='12'%20cy='12'%20r='1.7'%20fill='%23B85C3C'/%3E%3C/svg%3E") 12 12, pointer;
     }
     button:disabled { cursor: not-allowed; }
@@ -155,12 +155,8 @@
   .gate-ask { font-size: .9rem; color: var(--muted); margin: 20px 0 0; }
   .gate-ask a { color: var(--rust); font-weight: 700; border-bottom: 1px solid rgba(184,92,60,.4); }
 
-  .cs-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .cs-head { margin-bottom: 6px; }
   .cs-head h1 { font-size: clamp(1.75rem, 1.3rem + 2vw, 2.25rem); line-height: 1.15; margin: 0; }
-  .lock-btn { border: 1.5px solid var(--rule); background: var(--surface); color: var(--text-soft);
-    border-radius: var(--pill); padding: 8px 16px; font: 700 .74rem 'Karla', sans-serif;
-    letter-spacing: .06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
-  .lock-btn:hover { border-color: var(--accent); color: var(--accent); }
   .cs-intro { font-size: 1rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 20px; max-width: 58ch; }
 
   .cs-tabs { display: flex; flex-wrap: wrap; gap: 2px; margin: 0 0 22px; border-bottom: 1px solid var(--rule); }
@@ -259,7 +255,7 @@
       <section id="gate" class="gate">
         <div class="eyebrow">Case studies</div>
         <h1 class="display">Behind the ridge</h1>
-        <p>The write-ups for Bosch, Wizz Air, Netflix, and Medocity are password-protected out of respect for client confidentiality.</p>
+        <p>The write-ups for Wizz Air, Cisco, Brenntag, Bosch, Netflix, and Medocity are password-protected out of respect for client confidentiality.</p>
         <form id="gate-form" autocomplete="off">
           <input id="gate-input" type="password" placeholder="Password" aria-label="Password" autocomplete="off" spellcheck="false" />
           <button id="gate-btn" type="submit" class="btn btn-primary btn-block">Unlock</button>
@@ -272,7 +268,6 @@
         <div class="eyebrow">Case studies</div>
         <div class="cs-head">
           <h1 class="display">A few trails I've mapped</h1>
-          <button id="lock-btn" class="lock-btn" type="button">Lock again</button>
         </div>
         <p class="cs-intro">Thanks for asking. These stay off the public site, so please keep the details in confidence.</p>
         <div class="cs-tabs" id="cs-tabs" role="tablist" aria-label="Case studies"></div>
@@ -442,12 +437,6 @@
       btn.disabled = false;
       btn.textContent = 'Unlock';
     }
-  });
-
-  $('lock-btn').addEventListener('click', () => {
-    ssClear();
-    location.hash = '';
-    location.reload();
   });
 
   (async function boot() {

@@ -91,6 +91,44 @@
         { "h": "What we found", "body": "[Placeholder] Gap one.\n\n[Placeholder] Gap two." },
         { "h": "Impact", "body": "[Placeholder] The roadmap or principles that came out of it and what changed first." }
       ]
+    },
+    {
+      "key": "cisco",
+      "company": "Cisco",
+      "title": "Concept and usability research for a new product",
+      "summary": "[Placeholder] Ran the evaluative research behind the early concepts for a technical B2B product.",
+      "meta": {
+        "role": "Embedded UX Researcher",
+        "team": "[Placeholder] With a designer and a second researcher, inside the client's design team",
+        "timeline": "[range]",
+        "methods": ["Concept testing", "Usability testing", "Interviews", "Preference testing", "Surveys"]
+      },
+      "sections": [
+        { "h": "Context", "body": "[Placeholder] The product, the audience, and the feature the research focused on." },
+        { "h": "The question", "body": "[Placeholder] Are the concepts useful, and are the flows usable enough to build on?" },
+        { "h": "Approach", "body": "[Placeholder] Mostly evaluative work across several rounds, with internal recruitment." },
+        { "h": "What we found", "body": "[Placeholder] Finding one.\n\n[Placeholder] Finding two." },
+        { "h": "Impact", "body": "[Placeholder] What shipped and what the research changed." }
+      ]
+    },
+    {
+      "key": "brenntag",
+      "company": "Brenntag",
+      "title": "Building trust in an AI recommendation tool",
+      "summary": "[Placeholder] Set up research on the team and used it to drive a redesign of an ML-powered internal tool.",
+      "meta": {
+        "role": "UX lead and researcher, embedded",
+        "team": "[Placeholder] Embedded with engineers, data scientists and a designer",
+        "timeline": "[range]",
+        "methods": ["Stakeholder interviews", "Discovery interviews", "Concept testing", "Surveys", "Analytics"]
+      },
+      "sections": [
+        { "h": "Context", "body": "[Placeholder] The tool, its users, and why adoption was low." },
+        { "h": "The question", "body": "[Placeholder] Why do users not act on the recommendations?" },
+        { "h": "Approach", "body": "[Placeholder] A full cycle from stakeholder interviews to post-launch tracking." },
+        { "h": "What we found", "body": "[Placeholder] Finding one.\n\n[Placeholder] Finding two." },
+        { "h": "Impact", "body": "[Placeholder] The redesign it shaped and how research's standing changed." }
+      ]
     }
   ]
 }

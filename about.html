@@ -108,7 +108,7 @@
 
   /* interactive-only accent cursor — a small hollow ring like the topo summit marker */
   @media (hover: hover) and (pointer: fine) {
-    a[href], button, [role="button"], label[for], summary, .case-row, .lock-btn {
+    a[href], button, [role="button"], label[for], summary, .case-row {
       cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'%20fill='none'%20stroke='%23B85C3C'%20stroke-width='2'/%3E%3Ccircle%20cx='12'%20cy='12'%20r='1.7'%20fill='%23B85C3C'/%3E%3C/svg%3E") 12 12, pointer;
     }
     button:disabled { cursor: not-allowed; }
@@ -150,6 +150,9 @@
   .section-title:has(+ .section-sub) { margin-bottom: 6px; }
   .section-sub { font-size: .975rem; line-height: 1.6; color: var(--muted); margin: 0 0 24px; max-width: 58ch; }
   .section-note { font-size: .9rem; color: var(--muted); margin: 16px 0 0; }
+  .section-p { font-size: 1.05rem; line-height: 1.65; color: var(--text-soft); margin: 0 0 16px; max-width: 62ch; }
+  .section-p:last-child { margin-bottom: 0; }
+  .section-p a { color: var(--rust); font-weight: 700; border-bottom: 1px solid rgba(184,92,60,.4); }
 
   .course-row { display: flex; align-items: baseline; gap: 6px 20px; padding: 15px 0; border-top: 1px solid var(--rule); flex-wrap: wrap; }
   .course-row:last-of-type { border-bottom: 1px solid var(--rule); }
@@ -289,46 +292,9 @@
 
   <div class="section">
     <div class="container-narrow">
-      <h2 class="display section-title">Explorations in writing</h2>
-
-      <div class="article-row">
-        <div class="article-title">Innovation by Design: How to Unlock New Business Opportunities</div>
-        <div class="article-desc">Examples of how design thinking can transform organizations and inspire innovation.</div>
-        <div class="article-src">UX studio blog</div>
-      </div>
-      <div class="article-row">
-        <div class="article-title">UX Challenges in the Age of Personalized Experience</div>
-        <div class="article-desc">Challenges of personalization, and tips on how to overcome them.</div>
-        <div class="article-src">UX studio blog</div>
-      </div>
-      <div class="article-row">
-        <div class="article-title">Market Research vs User Research: How to Overcome Uncertainty</div>
-        <div class="article-desc">A short comparison between market research and user research.</div>
-        <div class="article-src">UX studio blog</div>
-      </div>
-      <div class="article-row">
-        <div class="article-title">Design for Impact: The Story Behind Our New Mission</div>
-        <div class="article-desc">The story of why and how we changed our company mission at UX studio.</div>
-        <div class="article-src">UX studio blog</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="container-narrow">
-      <h2 class="display section-title">Making my voice heard in UX</h2>
-      <div class="speaking-grid">
-        <div class="speaking-card">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="2" style="margin-bottom:14px;" aria-hidden="true" focusable="false"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0"></path><path d="M12 17v5"></path><path d="M8 22h8"></path></svg>
-          <div class="speaking-title">Design Aloud Podcast</div>
-          <p class="speaking-desc">First-ever guest on the show, for a wide-ranging chat across UX topics.</p>
-        </div>
-        <div class="speaking-card">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4B5D45" stroke-width="2" style="margin-bottom:14px;" aria-hidden="true" focusable="false"><path d="M3 11l18-7-7 18-3-8-8-3z"></path></svg>
-          <div class="speaking-title">UX Budapest Meetup</div>
-          <p class="speaking-desc">Spoke on data storytelling, closing out the event.</p>
-        </div>
-      </div>
+      <h2 class="display section-title">How I work now</h2>
+      <p class="section-p">At Instructure I've leaned harder into AI as part of the research process: moving faster through synthesis and analysis, drafting and stress-testing study plans, and prototyping ideas quickly enough to put them in front of people.</p>
+      <p class="section-p">I also build. This portfolio is vibe-coded, static HTML I put together with an AI coding agent, <a href="https://github.com/danjecan/dan-jecan-portfolio" target="_blank" rel="noopener noreferrer">source on GitHub</a>. Working this way keeps me close to the constraints designers and engineers deal with.</p>
     </div>
   </div>
 

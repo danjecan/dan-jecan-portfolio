@@ -97,22 +97,24 @@ ask Claude to.
 
 ## Case studies (password-protected)
 
-The Bosch / Wizz Air / Netflix / Medocity write-ups are confidential.
-`case-studies.html` only ever ships an **AES-GCM ciphertext** — the
-plaintext is never in the published HTML. A visitor types the
-password, the browser derives a key (PBKDF2-SHA256, 150k iterations)
-and decrypts client-side. Unlock is remembered for the browser session
-(`sessionStorage`); "Lock again" clears it.
+The Wizz Air / Cisco / Brenntag / Bosch / Netflix / Medocity write-ups
+are confidential. `case-studies.html` only ever ships an **AES-GCM
+ciphertext** — the plaintext is never in the published HTML. A visitor
+types the password, the browser derives a key (PBKDF2-SHA256, 150k
+iterations) and decrypts client-side. Unlock is remembered for the
+browser session (`sessionStorage`); closing the tab clears it. There is
+no visible "lock again" control.
 
 The unlocked view is a **tabbed panel** — one case study at a time,
-one tab per client, deep-linkable (`case-studies.html#netflix`),
+one tab per client, deep-linkable (`case-studies.html#netflix`, and the
+Home page's case rows link straight to the matching tab),
 arrow-key navigable. Each study follows the same shape (see
 `tools/case-studies.content.example.json`): `key`, `company` (the tab
-label), `title`, `summary`, an optional `meta` (`role`, `timeline`,
-`methods[]` — rendered as a line + chips), and a `sections` array of
-`{ "h": heading, "body": text }` (blank line between paragraphs). Keep
-each study to ~one screen — enough to keep a recruiter interested, not
-a full report.
+label), `title`, `summary`, an optional `meta` (`role`, `team`,
+`timeline`, `methods[]` — rendered as a line + chips), and a `sections`
+array of `{ "h": heading, "body": text }` (blank line between
+paragraphs). Keep each study to ~one screen — enough to keep a
+recruiter interested, not a full report.
 
 To publish real content:
 
