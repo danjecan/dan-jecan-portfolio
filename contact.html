@@ -27,6 +27,11 @@
     --shadow: 0 1px 2px rgba(43,40,32,.04), 0 12px 32px rgba(43,40,32,.06);
     --pad-x: clamp(20px, 5vw, 40px);
     --gap-section: clamp(44px, 7vw, 64px);
+    --w-page: 1160px;   /* nav, footer, wide layouts */
+    --w-col: 760px;     /* reading column inside .container-narrow */
+    --w-read: 37rem;    /* body prose */
+    --w-lede: 34rem;    /* leads, intros, section subheads */
+    --w-card: 30rem;    /* the contact form card */
   }
 
   * { box-sizing: border-box; }
@@ -47,9 +52,9 @@
 
   .page { position: relative; min-height: 100vh; display: flex; flex-direction: column; }
   main { position: relative; z-index: 2; flex: 1; }
-  .container { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
-  .container-narrow { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
-  .container-narrow > * { max-width: 760px; }
+  .container { max-width: var(--w-page); margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow { max-width: var(--w-page); margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow > * { max-width: var(--w-col); }
 
   .topo-bg { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   /* the "lantern" — the topo map is fog by default; the cursor is the headlamp
@@ -89,7 +94,7 @@
 
   .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
     color: var(--accent); margin: 0 0 16px; }
-  .lead { font-size: 1.15rem; line-height: 1.6; color: var(--text-soft); max-width: 56ch; margin: 0 0 28px; }
+  .lead { font-size: 1.15rem; line-height: 1.6; color: var(--text-soft); max-width: var(--w-lede); margin: 0 0 28px; }
 
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     font: 700 .95rem/1 'Karla', ui-sans-serif, sans-serif; padding: 13px 22px;
@@ -144,7 +149,7 @@
   .contact-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
   .h1-hero { font-size: clamp(2rem, 1.4rem + 3vw, 2.9rem); line-height: 1.12; margin: 0 0 18px; }
   .contact-p1 { font-size: 1.15rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 14px; }
-  .contact-p2 { font-size: 1rem; line-height: 1.6; color: var(--text-soft); margin: 0; max-width: 42ch; }
+  .contact-p2 { font-size: 1rem; line-height: 1.6; color: var(--text-soft); margin: 0; max-width: var(--w-lede); }
   .contact-p2 a { color: var(--rust); font-weight: 700; border-bottom: 1px solid rgba(184,92,60,.4); }
 
   .form-card { background: var(--surface); border-radius: var(--radius); padding: clamp(24px, 4vw, 34px);
@@ -156,7 +161,7 @@
 
   @media (max-width: 720px) {
     .contact-grid { grid-template-columns: 1fr; gap: 32px; }
-    .form-card { max-width: 460px; }
+    .form-card { max-width: var(--w-card); }
   }
 </style>
 </head>

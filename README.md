@@ -46,14 +46,20 @@ to the others.
   else. Body 16px / 1.65. One fluid `clamp()` per heading level; a
   `.lead` for intros; a green `.eyebrow` above each page title and a
   small uppercase kicker for in-page section labels.
-- **Layout:** every page shares one left rail. `.container` (1160px,
-  centred) holds the nav and footer; `.container-narrow` uses the same
-  box but caps its children at 760px, so the reading column starts at
-  the same left edge as the nav on every page. Each page opens with a
-  `.eyebrow` label at an identical x/y, then the heading. Contact is a
-  two-column grid that stacks below 720px; Home keeps a wider hero.
-  `.page` is a flex column with a sticky footer;
-  `html { overflow-y: scroll }` reserves the scrollbar gutter.
+- **Widths:** four tokens, in `:root`, and everything points at one of
+  them. `--w-page` (1160) for the nav, footer and wide layouts;
+  `--w-col` (760) is what `.container-narrow` caps its children at, so
+  the reading column starts at the same left edge as the nav on every
+  page; `--w-read` (37rem) for body prose; `--w-lede` (34rem) for
+  leads, intros and section subheads (`--w-card`, 30rem, is just the
+  Contact form card). No per-paragraph `ch` caps.
+- **Layout:** every page shares one left rail. `.container` holds the
+  nav and footer; `.container-narrow` is the same box capped to
+  `--w-col`. Each page opens with a `.eyebrow` label at an identical
+  x/y, then the heading. Contact is a two-column grid that stacks below
+  720px; Home keeps a narrower hero (`--w-lede`). `.page` is a flex
+  column with a sticky footer; `html { overflow-y: scroll }` reserves
+  the scrollbar gutter.
 - **Cursor:** the OS cursor is untouched for reading; on hover over
   interactive elements a small hollow rust ring shows via an inline
   SVG data-URI, gated to `@media (hover: hover) and (pointer: fine)`.

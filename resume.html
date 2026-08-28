@@ -27,6 +27,11 @@
     --shadow: 0 1px 2px rgba(43,40,32,.04), 0 12px 32px rgba(43,40,32,.06);
     --pad-x: clamp(20px, 5vw, 40px);
     --gap-section: clamp(44px, 7vw, 64px);
+    --w-page: 1160px;   /* nav, footer, wide layouts */
+    --w-col: 760px;     /* reading column inside .container-narrow */
+    --w-read: 37rem;    /* body prose */
+    --w-lede: 34rem;    /* leads, intros, section subheads */
+    --w-card: 30rem;    /* the contact form card */
   }
 
   * { box-sizing: border-box; }
@@ -47,9 +52,9 @@
 
   .page { position: relative; min-height: 100vh; display: flex; flex-direction: column; }
   main { position: relative; z-index: 2; flex: 1; }
-  .container { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
-  .container-narrow { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
-  .container-narrow > * { max-width: 760px; }
+  .container { max-width: var(--w-page); margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow { max-width: var(--w-page); margin-inline: auto; padding-inline: var(--pad-x); width: 100%; }
+  .container-narrow > * { max-width: var(--w-col); }
 
   .topo-bg { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   /* the "lantern" — the topo map is fog by default; the cursor is the headlamp
@@ -89,7 +94,7 @@
 
   .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
     color: var(--accent); margin: 0 0 16px; }
-  .lead { font-size: 1.15rem; line-height: 1.6; color: var(--text-soft); max-width: 56ch; margin: 0 0 28px; }
+  .lead { font-size: 1.15rem; line-height: 1.6; color: var(--text-soft); max-width: var(--w-lede); margin: 0 0 28px; }
 
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     font: 700 .95rem/1 'Karla', ui-sans-serif, sans-serif; padding: 13px 22px;
@@ -143,7 +148,7 @@
   main { padding: clamp(52px, 9vw, 92px) 0 0; }
   .r-name { font-size: clamp(2rem, 1.4rem + 2.6vw, 2.75rem); line-height: 1.08; margin: 0; }
   .r-role { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 12px 0 0; }
-  .r-lede { font-size: 1.1rem; line-height: 1.62; color: var(--text-soft); margin: 20px 0 0; max-width: 60ch; }
+  .r-lede { font-size: 1.1rem; line-height: 1.62; color: var(--text-soft); margin: 20px 0 0; max-width: var(--w-lede); }
   .r-contact { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: .95rem; color: var(--text-soft); margin: 20px 0 0; }
   .r-contact a { border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
   .r-contact a:hover { color: var(--accent); border-color: var(--accent); }
@@ -157,7 +162,7 @@
   .xp-co { font-size: 1.2rem; font-weight: 700; color: var(--ink); }
   .xp-dates { font-size: .85rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .xp-role { font-size: .95rem; font-weight: 600; color: var(--accent); margin: 3px 0 0; }
-  .xp-note { font-size: .975rem; line-height: 1.62; color: var(--text-soft); margin: 10px 0 0; max-width: 66ch; }
+  .xp-note { font-size: .975rem; line-height: 1.62; color: var(--text-soft); margin: 10px 0 0; max-width: var(--w-read); }
   .xp-clients { font-size: .9rem; color: var(--text-soft); margin: 10px 0 0; }
   .xp-clients .k { font-weight: 700; color: var(--text); }
   .xp-clients a { color: var(--rust); font-weight: 700; }
@@ -168,7 +173,7 @@
   .kv-row:first-child { border-top: none; }
   .kv-main { color: var(--ink); font-weight: 600; flex: 1 1 auto; min-width: 0; }
   .kv-aside { color: var(--muted); text-align: right; }
-  .oneline { font-size: .975rem; line-height: 1.62; color: var(--text-soft); margin: 12px 0 0; max-width: 62ch; }
+  .oneline { font-size: .975rem; line-height: 1.62; color: var(--text-soft); margin: 12px 0 0; max-width: var(--w-read); }
   .oneline .k { font-weight: 700; color: var(--text); }
 
   @media (max-width: 640px) {
