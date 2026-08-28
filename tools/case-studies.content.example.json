@@ -1,12 +1,13 @@
 {
-  "_readme": "Real case-study content. Copy to case-studies.content.json (gitignored), fill it in, then run `node tools/build-case-studies.mjs` to re-encrypt into case-studies.html. Only the AES-GCM ciphertext is committed. Keep every study to the SAME shape and roughly one screen of text — enough to keep a recruiter interested, not a full report.",
+  "_readme": "Real case-study content. Copy to case-studies.content.json (gitignored), fill it in, then run `node tools/build-case-studies.mjs` to re-encrypt into case-studies.html. Only the AES-GCM ciphertext is committed. Keep every study to the SAME shape and roughly one screen of text. Enough to keep a recruiter interested, not a full report.",
   "_template": {
     "key": "short-lowercase-id (used in the URL hash, e.g. #bosch)",
-    "company": "Client name — becomes the tab label, keep it short",
-    "title": "One phrase — the case study's headline",
+    "company": "Client name (becomes the tab label, keep it short)",
+    "title": "One phrase, the case study's headline",
     "summary": "One sentence: what the project was + the outcome.",
     "meta": {
       "role": "e.g. Lead UX Researcher",
+      "team": "optional, e.g. 2 (researcher + designer) plus the client's product team",
       "timeline": "e.g. 6 weeks · 2023",
       "methods": ["3–5 short method tags", "e.g. Usability testing", "Journey mapping"]
     },
@@ -22,7 +23,7 @@
     {
       "key": "bosch",
       "company": "Bosch",
-      "title": "Concept testing — from ambiguity to a validated direction",
+      "title": "Concept testing, from ambiguity to a validated direction",
       "summary": "[Placeholder] Pressure-tested an early product concept and gave the team a direction they could commit to.",
       "meta": {
         "role": "Lead UX Researcher",

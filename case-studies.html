@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Case studies — Dan Jecan</title>
+<title>Case studies · Dan Jecan</title>
 <meta name="description" content="Password-protected case studies: Bosch, Wizz Air, Netflix, and Medocity.">
 <meta name="robots" content="noindex">
 <style>
@@ -274,7 +274,7 @@
           <h1 class="display">A few trails I've mapped</h1>
           <button id="lock-btn" class="lock-btn" type="button">Lock again</button>
         </div>
-        <p class="cs-intro">Thanks for asking. These stay off the public site &mdash; please keep the details in confidence.</p>
+        <p class="cs-intro">Thanks for asking. These stay off the public site, so please keep the details in confidence.</p>
         <div class="cs-tabs" id="cs-tabs" role="tablist" aria-label="Case studies"></div>
         <div id="cs-panels"></div>
       </div>
@@ -326,6 +326,7 @@
     const meta = s.meta || {};
     const bits = [];
     if (meta.role) bits.push('<span><span class="k">Role</span>' + escapeHtml(meta.role) + '</span>');
+    if (meta.team) bits.push('<span><span class="k">Team</span>' + escapeHtml(meta.team) + '</span>');
     if (meta.timeline) bits.push('<span><span class="k">When</span>' + escapeHtml(meta.timeline) + '</span>');
     const methods = (meta.methods || []).map((m) => '<span>' + escapeHtml(m) + '</span>').join('');
     const sections = (s.sections || []).map((sec) => {
