@@ -5,9 +5,9 @@ Shared instructions for any AI assistant or IDE working in this repo (Claude, Ch
 ## What this is
 Dan Jecan's portfolio site (Senior UX Researcher): Home, About, Resume, Contact, Case studies.
 Domain: danjecan.com (see `CNAME`), served by GitHub Pages from `main`.
-Repo: github.com/danjecan/dan-jecan-portfolio · Local: `~/Documents/Projects/danjecan.com`
+Repo: github.com/danjecan/dan-jecan-portfolio · Local: `~/Documents/Projects/danjecan/danjecan.com`
 
-**Read `docs/development.md` first.** It documents the design system, topo backgrounds and case-study pipeline in detail. If `NOTES.local.md` exists (Dan's private notes, not in git), read it too.
+**Read `docs/development.md` first.** It documents the design system, topo backgrounds and case-study pipeline in detail. If the private design repo is next to this one (`../dan-jecan-portfolio-design`), read its `README.md` and `docs/notes.md` too: it holds the design canvas and private notes.
 
 ## Ground rules
 - Plain static HTML/CSS/JS. No framework, no build step, no runtime dependencies. Keep it that way.
